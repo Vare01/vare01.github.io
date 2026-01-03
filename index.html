@@ -237,9 +237,8 @@
      * BEZBEDNOST KLJUČA:
      * Na javnim servisima kao što je GitHub Pages, kod je vidljiv. 
      * Vaš ključ je dole obfuskiran (Base64) da ne bude "na izvol'te".
-     * * NAJBOLJA PRAKSA: Idite na Google Cloud Console -> APIs & Services -> Credentials
-     * Kliknite na svoj ključ i pod "Website restrictions" dodajte svoj domen (npr. korisnik.github.io/*)
-     * Tako će ključ raditi SAMO na vašem sajtu!
+     * NAJBOLJA PRAKSA: Idite na Google Cloud Console -> APIs & Services -> Credentials
+     * Ograničite ključ na svoj domen (npr. korisnik.github.io).
      */
     const _0x4a2 = "QUl6YVN5Q21WTTdvY0FfRmh6MHRVRnhQZlFpRFREMGRCNEpCbGMw"; 
     const getK = () => atob(_0x4a2);
@@ -301,28 +300,6 @@
             units: ["otkucaja", "puta", "km", "kg", "L", "kg"],
             ofacts: ["Potrošen kiseonik", "Proizveden CO2", "Potrebno drveća"],
             ounits: ["litara", "kg", "stabala"]
-        },
-        de: {
-            nav: ["Körper Statistiken", "Sauerstofffabrik", "Scroll Everest", "Kaffee Ozean", "Parfüm Wert", "Prüfung Timer", "Toilette Warp", "Schlafschulden", "Bücherwurm", "Bezos vs Sie", "Pizza-Fläche", "Pendlerleben", "Sprachbibliothek", "Sitzfalle", "Schlangestehen"],
-            h: ["Körperfakten", "Sauerstofffabrik", "Scroll-Distanz", "Kaffee-Ozean", "Parfüm-Wert", "Prüfungsvorbereitung", "Toiletten-Warp", "Schlafschulden", "Bücherwurm", "Bezos-Lücke", "Pizza-Oberfläche", "Verkehrsfalle", "Sprechbibliothek", "Sitzfalle", "Schlangestehen"],
-            d: ["Biologische Auswirkungen Ihrer Existenz.", "Menge an verbrauchtem Sauerstoff und produziertem CO2.", "Vertikale Distanz, die Sie gescrollt haben.", "Literaler Ozean an konsumiertem Koffein.", "Wahre Kosten für guten Duft.", "Lernsitzungen basierend auf Volumen.", "Leben auf dem Porzellanthron.", "Kosten des Wachbleibens vs. Ruhe.", "Wissensvolumen in Büchern.", "Milliardär vs. Ihr Jahreslohn.", "Gesamtfläche an verzehrtem Teig.", "Zeitverlust im Stau.", "Bibliothek der gesprochenen Wörter.", "Auswirkungen eines sitzenden Lebensstils.", "Wartezeit in Warteschlangen."],
-            lbl: { age: "Alter", start: "Begonnen", hours: "Std/Tag", daily: "Täglich", size: "Größe (ml)", price: "Preis (€)", sprays: "Sprays", freq: "Tage/Woche", pages: "Seiten", pph: "Seiten/h", min: "Min/Sitzung", shours: "Schlafstd.", pday: "Seiten/Tag", monthly: "Pizza/Monat", salary: "Gehalt (€)", chours: "Std/Tag", cyears: "Jahre", shours_day: "Std/Tag", syears: "Jahre", btn: "Berechnen 🚀", ai_btn: "AI-Einblick ✨", ai_loading: "Analyse...", ai_title: "AI Analyse ✨" },
-            res_t: ["Schock-Faktor 😱", "Mathematik 📊"],
-            facts: ["Herzschlag", "Atemzüge", "Haarwuchs", "Fäkalien", "Urin", "Haut"],
-            units: ["Schläge", "Mal", "km", "kg", "L", "kg"],
-            ofacts: ["Verbrauchter Sauerstoff", "Produziertes CO2", "Benötigte Bäume"],
-            ounits: ["Liter", "kg", "Bäume"]
-        },
-        fr: {
-            nav: ["Stats Corps", "Usine Oxygène", "Scroll Everest", "Océan Café", "Valeur Parfum", "Exam Timer", "Toilette Warp", "Dette Sommeil", "Lecteur Livre", "Ecart Bezos", "Surface Pizza", "Vie Trajets", "Bibliothèque Mots", "Vie Assise", "File d'attente"],
-            h: ["Faits Biologiques", "Usine à Oxygène", "Distance Scroll", "Océan de Café", "Valeur Parfum", "Préparation Exam", "Temps Toilette", "Dette Sommeil", "Lecteur de Livre", "Ecart Bezos", "Surface Pizza", "Piège Trafic", "Bibliothèque Parlée", "Piège Assis", "Spécialiste File"],
-            d: ["Impact biologique de votre existence.", "Quantité d'oxygène consommée et de CO2 produit.", "Distance verticale scrollée.", "Océan de caféine consommé.", "Coût réel pour sentir bon.", "Sessions d'étude par volume.", "Vie sur le trône de porcelaine.", "Coût de l'éveil vs repos.", "Volume de connaissances en livres.", "Milliardaire vs votre salaire annuel.", "Surface totale de pâte mangée.", "Temps perdu dans les bouchons.", "Bibliothèque de mots parlés.", "Impact de la sédentarité.", "Temps passé dans les files."],
-            lbl: { age: "Âge", start: "Commencé", hours: "Heures/jour", daily: "Par jour", size: "Taille (ml)", price: "Prix (€)", sprays: "Sprays", freq: "Jours/sem", pages: "Pages", pph: "Pages/h", min: "Min/session", shours: "Sommeil", pday: "Pages/jour", monthly: "Pizzas/mois", salary: "Salaire (€)", chours: "Heures/jour", cyears: "Années", shours_day: "Heures/jour", syears: "Années", btn: "Calculer 🚀", ai_btn: "Aperçu AI ✨", ai_loading: "Analyse...", ai_title: "Analyse AI ✨" },
-            res_t: ["Le Choc 😱", "Calcul 📊"],
-            facts: ["Battements", "Souffles", "Cheveux", "Excréments", "Urine", "Peau"],
-            units: ["battements", "fois", "km", "kg", "L", "kg"],
-            ofacts: ["Oxygène consommé", "CO2 produit", "Arbres requis"],
-            ounits: ["litres", "kg", "arbres"]
         }
     };
 
@@ -443,9 +420,9 @@
 
         if (activeTool === 'oxygen') {
             const age = vals.age || 1;
-            const o2 = age * 365.25 * 550; // Liters O2 per day avg
-            const co2 = age * 365.25 * 1.0; // kg CO2 per day avg
-            const trees = Math.ceil(co2 / 22); // One tree absorbs 22kg/year
+            const o2 = age * 365.25 * 550; 
+            const co2 = age * 365.25 * 1.0; 
+            const trees = Math.ceil(co2 / 22); 
 
             const facts = [
                 { icon: "🫁", label: d.ofacts[0], value: formatNumber(o2), unit: d.ounits[0] },
@@ -457,8 +434,6 @@
         }
 
         const years = Math.max(0, vals.age - (vals.start || 0));
-
-        // Multi-language results templates
         const resMsg = {
             en: {
                 scroll: [`You scrolled <span class="highlight">${formatNumber(vals.hours * 0.18 * 365.25 * years)} km</span>. That's <span class="highlight">${((vals.hours * 0.18 * 365.25 * years) / 8.848).toFixed(1)} Mt. Everests</span>!`, `0.18km/h speed across ${years} years.`],
@@ -539,6 +514,9 @@
         container.appendChild(aiBlock);
     }
 
+    // Pomoćna funkcija za čekanje (sleep)
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
     async function getAIAnalysis(type, result) {
         const d = translations[activeLang] || translations['en'];
         const btn = document.querySelector(`.ai-btn`);
@@ -549,23 +527,60 @@
 
         btn.disabled = true; spinner.style.display = 'block';
         btnLabel.innerText = d.lbl.ai_loading;
+        aiBox.style.display = "block";
+        aiVal.innerText = "...";
 
         const prompt = d.ai_prompt.replace("{type}", type).replace("{result}", result).replace("{lang}", activeLang);
         
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${getK()}`;
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-            });
-            const data = await response.json();
-            aiVal.innerText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Greška.";
-            aiBox.style.display = "block";
-        } catch (e) { aiVal.innerText = "Greška u povezivanju."; aiBox.style.display = "block"; }
+        // Zahtev sa exponential backoff logikom
+        let response;
+        let success = false;
+        let lastError = "";
+
+        for (let i = 0; i < 5; i++) {
+            try {
+                // Model: gemini-1.5-flash je najstabilniji za javne ključeve
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${getK()}`;
+                
+                response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }]
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (text) {
+                        aiVal.innerText = text;
+                        success = true;
+                        break;
+                    } else {
+                        lastError = "API je vratio prazan odgovor.";
+                    }
+                } else {
+                    lastError = data.error?.message || `Greška: ${response.status}`;
+                    // Ako je 429 (Too many requests), nastavi sa petljom (backoff)
+                    if (response.status !== 429) break;
+                }
+            } catch (e) {
+                lastError = "Mrežna greška. Proverite internet.";
+            }
+            
+            // Exponential backoff: 1s, 2s, 4s, 8s...
+            await sleep(Math.pow(2, i) * 1000);
+        }
+
+        if (!success) {
+            aiVal.innerHTML = `<span style="color: #ff4444;">${lastError}</span><br><small style="font-size: 10px;">Proverite da li je API ključ aktivan na Google AI Studio.</small>`;
+        }
         
         spinner.style.display = "none";
-        btnLabel.innerText = d.lbl.ai_btn; btn.disabled = false;
+        btnLabel.innerText = d.lbl.ai_btn; 
+        btn.disabled = false;
     }
 
     function filterTools() {

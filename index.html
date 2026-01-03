@@ -12,6 +12,18 @@
             --text: #f8fafc;
             --sidebar-w: 280px;
             --accent: #3b82f6;
+            --border: #2d334a;
+            --input-bg: #0b0f1a;
+        }
+
+        /* Light Theme Variables */
+        body.light-theme {
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --text: #0f172a;
+            --border: #e2e8f0;
+            --input-bg: #f8fafc;
+            --accent: #2563eb;
         }
 
         body {
@@ -22,30 +34,42 @@
             display: flex;
             height: 100vh;
             overflow: hidden;
+            transition: background 0.3s, color 0.3s;
         }
 
         /* Sidebar - Desktop */
         .sidebar {
             width: var(--sidebar-w);
             background: var(--card);
-            border-right: 1px solid #2d334a;
+            border-right: 1px solid var(--border);
             display: flex; flex-direction: column;
             padding: 25px; flex-shrink: 0; z-index: 100;
         }
 
         .logo-container {
             margin-bottom: 25px;
+            position: relative;
         }
 
         .logo {
             font-size: 1.4rem; font-weight: 900; color: var(--primary);
             letter-spacing: -1px;
             display: flex; align-items: center; gap: 10px;
+            position: relative;
+        }
+
+        .santa-hat {
+            position: absolute;
+            top: -12px;
+            left: 10px;
+            width: 30px;
+            transform: rotate(-15deg);
+            pointer-events: none;
         }
 
         .beta-tag {
             font-size: 0.65rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(128, 128, 128, 0.1);
             color: #94a3b8;
             padding: 2px 6px;
             border-radius: 4px;
@@ -55,8 +79,8 @@
         }
 
         .search-box {
-            padding: 12px; background: var(--bg); border: 1px solid #2d334a;
-            border-radius: 10px; color: white; margin-bottom: 20px;
+            padding: 12px; background: var(--input-bg); border: 1px solid var(--border);
+            border-radius: 10px; color: var(--text); margin-bottom: 20px;
             width: 100%; box-sizing: border-box; outline: none; font-size: 0.85rem;
         }
 
@@ -72,10 +96,36 @@
             display: flex; align-items: center; gap: 10px;
         }
 
-        .nav-item:hover { background: rgba(0, 255, 136, 0.05); color: white; }
+        .nav-item:hover { background: rgba(0, 255, 136, 0.05); color: var(--text); }
         .nav-item.active {
             background: var(--primary); color: #000; font-weight: 700;
         }
+
+        /* Top Actions (Theme & Snow) */
+        .top-actions {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1001;
+        }
+
+        .action-btn {
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .action-btn:hover { border-color: var(--primary); }
 
         /* Mobile Header */
         .mobile-header {
@@ -83,7 +133,7 @@
             width: 100%;
             background: var(--card);
             padding: 10px 15px;
-            border-bottom: 1px solid #2d334a;
+            border-bottom: 1px solid var(--border);
             position: fixed;
             top: 0;
             left: 0;
@@ -101,7 +151,7 @@
         }
 
         .mobile-tool-select {
-            background: var(--bg);
+            background: var(--input-bg);
             color: var(--primary);
             border: 1px solid var(--primary);
             padding: 10px;
@@ -116,22 +166,21 @@
         .main-content {
             flex-grow: 1; display: flex; flex-direction: column;
             align-items: center; justify-content: flex-start;
-            padding: 40px 20px; overflow-y: auto; position: relative;
+            padding: 60px 20px 40px; overflow-y: auto; position: relative;
         }
 
         .lang-bar {
             display: flex; gap: 5px;
         }
 
-        /* Desktop position for lang-bar */
         .sidebar .lang-bar {
             margin-top: auto;
             padding-top: 20px;
-            border-top: 1px solid #2d334a;
+            border-top: 1px solid var(--border);
         }
 
         .lang-btn {
-            background: var(--card); border: 1px solid #2d334a; color: white;
+            background: var(--card); border: 1px solid var(--border); color: var(--text);
             padding: 6px 10px; border-radius: 8px; cursor: pointer;
             font-size: 0.75rem; font-weight: 600; flex: 1;
             text-align: center;
@@ -141,9 +190,14 @@
 
         .tool-card {
             background: var(--card); padding: 30px; border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4); width: 100%;
-            max-width: 600px; border: 1px solid #2d334a;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1); width: 100%;
+            max-width: 600px; border: 1px solid var(--border);
             margin-bottom: 40px;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 10;
         }
 
         h2 { margin: 0 0 10px 0; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
@@ -153,22 +207,35 @@
         .input-group { flex: 1; min-width: 140px; }
 
         label {
-            display: block; margin-bottom: 8px; font-size: 0.7rem;
-            color: #64748b; text-transform: uppercase; font-weight: 800;
+            display: block; margin-bottom: 12px; font-size: 0.85rem;
+            color: #94a3b8; text-transform: uppercase; font-weight: 800;
+            letter-spacing: 0.5px;
         }
 
         input, select {
-            width: 100%; padding: 12px; background: var(--bg);
-            border: 1px solid #2d334a; border-radius: 10px; color: white;
-            font-size: 0.95rem; box-sizing: border-box;
+            width: 100%; padding: 14px; background: var(--input-bg);
+            border: 1px solid var(--border); border-radius: 12px; color: var(--text);
+            font-size: 1rem; box-sizing: border-box; transition: border 0.3s;
         }
 
         input:focus, select:focus { border-color: var(--primary); outline: none; }
 
-        .calc-btn {
-            width: 100%; padding: 16px; background: var(--primary);
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .calc-btn, .nav-btn {
+            flex: 1; padding: 16px; background: var(--primary);
             color: #000; border: none; border-radius: 12px; font-weight: 800;
-            cursor: pointer; text-transform: uppercase; font-size: 0.9rem; margin-top: 10px;
+            cursor: pointer; text-transform: uppercase; font-size: 0.9rem;
+        }
+
+        .nav-btn.secondary {
+            background: rgba(128, 128, 128, 0.1);
+            color: var(--text);
+            border: 1px solid var(--border);
         }
 
         .ai-btn {
@@ -176,16 +243,13 @@
             border-radius: 14px; font-weight: 800; border: none; cursor: pointer;
             display: flex; align-items: center; justify-content: center; gap: 12px; 
             margin-top: 20px; width: 100%; font-size: 1.1rem;
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
-            transition: transform 0.2s ease;
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
         }
-
-        .ai-btn:active { transform: scale(0.98); }
 
         .result-container { margin-top: 30px; display: none; width: 100%; }
         .res-block {
-            background: rgba(255,255,255,0.02); border-radius: 16px;
-            padding: 18px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.05);
+            background: rgba(128, 128, 128, 0.05); border-radius: 16px;
+            padding: 18px; margin-bottom: 12px; border: 1px solid var(--border);
         }
 
         .ai-block {
@@ -194,15 +258,29 @@
             margin-top: 15px; display: none;
         }
 
-        .res-title { color: var(--primary); font-size: 0.65rem; font-weight: 900; text-transform: uppercase; margin-bottom: 5px; display: block; }
+        .res-title, .ai-title { color: var(--primary); font-size: 0.65rem; font-weight: 900; text-transform: uppercase; margin-bottom: 5px; display: block; }
         .res-value { font-size: 1rem; font-weight: 500; line-height: 1.5; }
         .highlight { color: var(--primary); font-weight: 800; }
 
-        .spinner {
-            width: 22px; height: 22px; border: 3px solid rgba(255,255,255,0.3);
-            border-top: 3px solid white; border-radius: 50%; animation: spin 1s linear infinite; display: none;
+        .progress-container {
+            width: 100%; height: 6px; background: var(--border);
+            border-radius: 10px; margin-bottom: 30px; overflow: hidden;
         }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .progress-bar {
+            height: 100%; background: var(--primary); transition: width 0.4s ease;
+        }
+
+        /* Snow Canvas */
+        #snow-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            display: none;
+        }
 
         /* Responsive UI */
         @media (max-width: 850px) {
@@ -211,21 +289,31 @@
             .main-content { padding-top: 140px; padding-left: 15px; padding-right: 15px; height: auto; overflow: visible; }
             body { height: auto; overflow-y: auto; }
             .tool-card { padding: 20px; margin-top: 0; }
+            .top-actions { top: 110px; right: 15px; scale: 0.9; }
         }
     </style>
 </head>
 <body>
 
+    <canvas id="snow-canvas"></canvas>
+
     <!-- Mobile Header -->
     <header class="mobile-header">
         <div class="mobile-top-bar">
             <div class="logo-container">
-                <div class="logo" style="margin:0; font-size: 1rem;">SHOCKING MATH ⚡</div>
+                <div class="logo">
+                    <svg class="santa-hat" viewBox="0 0 100 100">
+                        <path d="M20,50 Q50,0 80,50 L85,60 Q50,45 15,60 Z" fill="#ff4444" stroke="#fff" stroke-width="2"/>
+                        <circle cx="85" cy="60" r="8" fill="#fff" />
+                        <path d="M15,60 Q50,50 85,60 L85,70 Q50,60 15,70 Z" fill="#fff" />
+                    </svg>
+                    SHOCKING MATH ⚡
+                </div>
                 <div class="beta-tag">BETA v1.0</div>
             </div>
-            <div class="lang-bar" id="mobile-lang-bar">
-                <button class="lang-btn active" onclick="changeLang('en')">EN</button>
-                <button class="lang-btn" onclick="changeLang('sr')">SR</button>
+            <div class="lang-bar">
+                <button class="lang-btn active" id="m-lang-en" onclick="changeLang('en')">EN</button>
+                <button class="lang-btn" id="m-lang-sr" onclick="changeLang('sr')">SR</button>
             </div>
         </div>
         <select class="mobile-tool-select" id="mobile-nav" onchange="selectMobileTool(this.value)"></select>
@@ -234,27 +322,46 @@
     <!-- Desktop Sidebar -->
     <aside class="sidebar">
         <div class="logo-container">
-            <div class="logo">SHOCKING MATH ⚡</div>
+            <div class="logo">
+                <svg class="santa-hat" viewBox="0 0 100 100">
+                    <path d="M20,50 Q50,0 80,50 L85,60 Q50,45 15,60 Z" fill="#ff4444" stroke="#fff" stroke-width="2"/>
+                    <circle cx="85" cy="60" r="8" fill="#fff" />
+                    <path d="M15,60 Q50,50 85,60 L85,70 Q50,60 15,70 Z" fill="#fff" />
+                </svg>
+                SHOCKING MATH ⚡
+            </div>
             <div class="beta-tag">BETA v1.0</div>
         </div>
         <input type="text" class="search-box" id="search" placeholder="Pretraži..." onkeyup="filterTools()">
         <ul class="nav-list" id="nav-list"></ul>
         <div class="lang-bar">
-            <button class="lang-btn active" onclick="changeLang('en')">EN</button>
-            <button class="lang-btn" onclick="changeLang('sr')">SR</button>
+            <button class="lang-btn active" id="d-lang-en" onclick="changeLang('en')">EN</button>
+            <button class="lang-btn" id="d-lang-sr" onclick="changeLang('sr')">SR</button>
         </div>
     </aside>
 
     <main class="main-content">
+        <div class="top-actions">
+            <button class="action-btn" onclick="toggleSnow()" id="snow-toggle-btn">
+                <span>❄️</span> <span class="btn-text">Snow Off</span>
+            </button>
+            <button class="action-btn" onclick="toggleTheme()" id="theme-toggle-btn">
+                <span>🌙</span> <span class="btn-text">Dark</span>
+            </button>
+        </div>
         <div id="tool-view" style="width: 100%; display: flex; justify-content: center;"></div>
     </main>
 
 <script>
     let activeLang = 'en';
     let activeTool = "lifestyle";
+    let quizStep = 0;
+    let quizData = {};
+    let isDarkMode = true;
+    let isSnowing = false;
 
     const toolDefinitions = [
-        { id: "lifestyle", emoji: "🧪", inputs: ["age", "smoke", "packs", "smoke_start", "drink", "alcohol_freq", "drink_start", "diet", "no_pork"] },
+        { id: "lifestyle", emoji: "🧪", inputs: ["age", "smoke", "packs", "smoke_start", "drink", "alcohol_freq", "drink_start", "diet", "consume_pork"] },
         { id: "human", emoji: "👤", inputs: ["age"] },
         { id: "oxygen", emoji: "🌬️", inputs: ["age"] },
         { id: "scroll", emoji: "📱", inputs: ["age", "start", "hours"] },
@@ -276,48 +383,52 @@
         en: {
             nav: ["Lifestyle Quiz", "Human Body Stats", "Oxygen Factory", "Scroll Everest", "Coffee Ocean", "Perfume Value", "Exam Timer", "Toilet Warp", "Sleep Debt", "Book Worm", "Bezos vs You", "Pizza Surface", "Commute Life", "Words Library", "Sitting Life", "Waiting Line"],
             h: ["Lifestyle Shock Quiz", "Human Body Facts", "Oxygen Factory", "Scroll Distance", "Coffee Ocean", "Perfume Value", "Exam Prep", "Toilet Time", "Sleep Debt", "Book Worm", "The Bezos Gap", "Pizza Surface", "Traffic Trap", "Talking Library", "The Chair Trap", "Queue Specialist"],
-            d: ["Calculate the true impact of your habits.", "Biological impact of your existence.", "Amount of oxygen you've consumed and CO2 produced.", "Vertical distance you've scrolled.", "The literal ocean of caffeine consumed.", "True cost of smelling good.", "Study sessions based on volume.", "Life spent on the porcelain throne.", "Cost of staying awake vs rest.", "Knowledge volume in books.", "Billionaire vs your annual wage.", "Total surface of dough eaten.", "Time lost in traffic jams.", "Library of words you've spoken.", "Impact of a sedentary lifestyle.", "Time spent waiting in queues."],
+            d: ["Discover the total volume of your habits.", "Biological impact of your existence.", "Amount of oxygen you've consumed and CO2 produced.", "Vertical distance you've scrolled.", "The literal ocean of caffeine consumed.", "True cost of smelling good.", "Study sessions based on volume.", "Life spent on the porcelain throne.", "Cost of staying awake vs rest.", "Knowledge volume in books.", "Billionaire vs your annual wage.", "Total surface of dough eaten.", "Time lost in traffic jams.", "Library of words you've spoken.", "Impact of a sedentary lifestyle.", "Time spent waiting in queues."],
             lbl: {
-                age: "Age", smoke: "Smoker?", packs: "Packs/Day", smoke_start: "Smoking since age",
-                drink: "Drinker?", alcohol_freq: "Drinks/Week", drink_start: "Drinking since age",
-                diet: "Diet Type", no_pork: "No Pork?",
+                age: "What is your current age?", smoke: "Do you smoke cigarettes?", packs: "How many packs do you smoke per day?", smoke_start: "At what age did you start smoking?",
+                drink: "Do you consume alcohol?", alcohol_freq: "How many drinks do you have per week?", drink_start: "At what age did you start drinking?",
+                diet: "What is your primary diet?", consume_pork: "Do you consume pork?",
                 start: "Started at", hours: "Hours/Day", daily: "Times/Day", size: "Size (ml)", price: "Price (€)",
                 sprays: "Sprays", freq: "Days/Week", pages: "Pages", pph: "Pages/h", min: "Min/Session",
                 shours: "Sleep Hours", pday: "Pages/Day", monthly: "Pizzas/Month", salary: "Salary (€)", 
                 chours: "Hours/Day", cyears: "Years", shours_day: "Hours Sitting", syears: "Years",
                 btn: "Calculate 🚀", ai_btn: "Get ✨ AI Insight", ai_loading: "Analyzing...", ai_title: "AI Analysis ✨",
                 soon: "Feature coming soon! 🚀",
-                opt_yes: "Yes", opt_no: "No", opt_normal: "Normal", opt_vegan: "Vegan", opt_veg: "Vegetarian"
+                opt_yes: "Yes", opt_no: "No", opt_normal: "Normal (Everything)", opt_vegan: "Vegan", opt_veg: "Vegetarian",
+                next: "Next", back: "Back",
+                snowOn: "Snow On", snowOff: "Snow Off", themeDark: "Dark", themeLight: "Light"
             },
             res_t: ["The Shock 😱", "The Math 📊"],
             facts: ["Heartbeat", "Breaths", "Hair", "Feces", "Urine", "Skin"],
             units: ["beats", "times", "km", "kg", "L", "kg"],
             ofacts: ["Oxygen Consumed", "CO2 Produced", "Trees Required"],
             ounits: ["liters", "kg", "trees"],
-            life_res: ["Smoking", "Alcohol", "Diet"]
+            life_res: ["Smoking Impact", "Alcohol Impact", "Diet Impact"]
         },
         sr: {
             nav: ["Životni kviz", "Ljudsko telo", "Fabrika kiseonika", "Scroll Everest", "Okean kafe", "Cena parfema", "Ispit tajmer", "WC vreme", "Dug spavanja", "Čitač knjiga", "Bezos i ti", "Površina pice", "Život u putu", "Biblioteka reči", "Život u stolici", "Red čekanja"],
             h: ["Šok kviz navika", "Činjenice o telu", "Fabrika kiseonika", "Scroll kilometraža", "Okean kafe", "Vrednost parfema", "Spremanje ispita", "WC vremenska mašina", "Dug spavanja", "Čitač knjiga", "Bezosov ponor", "Površina pice", "Zemlja u gužvi", "Govorna biblioteka", "Zamka stolice", "Specijalista za redove"],
-            d: ["Izračunaj pravi uticaj tvojih svakodnevnih navika.", "Izračunaj svoj biološki uticaj do sada.", "Količina kiseonika koju si potrošio i CO2 koji si proizveo.", "Koliko si visoko skrolovao vertikalno.", "Doslovni okean kofeina koji si popio.", "Prava cena tvog dobrog mirisa.", "Isplaniraj učenje na osnovu strana.", "Vreme provedeno na porcelanskom tronu.", "Cena nespavanja u odnosu na odmor.", "Zapremina znanja u knjigama.", "Koliko brzo Bezos zaradi tvoju platu.", "Ukupna površina testa koju si pojeo.", "Vreme izgubljeno u saobraćaju.", "Biblioteka reči koje si izgovorio.", "Fizički uticaj sedenja.", "Vreme provedeno u redovima."],
+            d: ["Otkrij pravu zapreminu tvojih navika.", "Izračunaj svoj biološki uticaj do sada.", "Količina kiseonika koju si potrošio i CO2 koji si proizveo.", "Koliko si visoko skrolovao vertikalno.", "Doslovni okean kofeina koji si popio.", "Prava cena tvog dobrog mirisa.", "Isplaniraj učenje na osnovu strana.", "Vreme provedeno na porcelanskom tronu.", "Cena nespavanja u odnosu na odmor.", "Zapremina znanja u knjigama.", "Koliko brzo Bezos zaradi tvoju platu.", "Ukupna površina testa koju si pojeo.", "Vreme izgubljeno u saobraćaju.", "Biblioteka reči koje si izgovorio.", "Fizički uticaj sedenja.", "Vreme provedeno u redovima."],
             lbl: {
-                age: "Godine", smoke: "Pušač?", packs: "Pakli dnevno", smoke_start: "Pušiš od god.",
-                drink: "Piješ?", alcohol_freq: "Pića nedeljno", drink_start: "Piješ od god.",
-                diet: "Ishrana", no_pork: "Bez svinjetine?",
+                age: "Koliko imaš godina?", smoke: "Da li pušiš cigarete?", packs: "Koliko pakli dnevno pušiš?", smoke_start: "Sa koliko godina si počeo da pušiš?",
+                drink: "Da li konzumiraš alkohol?", alcohol_freq: "Koliko pića popiješ nedeljno?", drink_start: "Sa koliko godina si počeo da piješ?",
+                diet: "Tip ishrane", consume_pork: "Da li konzumiraš svinjetinu?",
                 start: "Počeo sa", hours: "Sati dnevno", daily: "Dnevno puta", size: "Veličina (ml)", price: "Cena (€)",
                 sprays: "Prskanja", freq: "Dana/Nedeljno", pages: "Ukupno strana", pph: "Strana/h", min: "Min/Sesiji",
                 shours: "Sati sna", pday: "Strana/Dan", monthly: "Pica mesečno", salary: "Plata (€)",
                 chours: "Sati/Dan", cyears: "Godina puta", shours_day: "Sati sedenja", syears: "Godina sedenja",
                 btn: "Izračunaj 🚀", ai_btn: "Zatraži ✨ AI Uvid", ai_loading: "Analiziram...", ai_title: "AI Analiza ✨",
                 soon: "Funkcija stiže uskoro! 🚀",
-                opt_yes: "Da", opt_no: "Ne", opt_normal: "Normalna", opt_vegan: "Vegan", opt_veg: "Vegetarijanac"
+                opt_yes: "Da", opt_no: "Ne", opt_normal: "Normalna (sve)", opt_vegan: "Vegan", opt_veg: "Vegetarijanac",
+                next: "Dalje", back: "Nazad",
+                snowOn: "Sneg On", snowOff: "Sneg Off", themeDark: "Tamna", themeLight: "Svetla"
             },
             res_t: ["Šok podatak 😱", "Matematika 📊"],
             facts: ["Otkucaji srca", "Udisaji", "Rast kose", "Izmet", "Urin", "Mrtva koža"],
             units: ["otkucaja", "puta", "km", "kg", "L", "kg"],
             ofacts: ["Potrošen kiseonik", "Proizveden CO2", "Potrebno drveća"],
             ounits: ["litara", "kg", "stabala"],
-            life_res: ["Pušenje", "Alkohol", "Ishrana"]
+            life_res: ["Uticaj pušenja", "Uticaj alkohola", "Uticaj ishrane"]
         }
     };
 
@@ -325,32 +436,38 @@
         return new Intl.NumberFormat('de-DE').format(Math.floor(n));
     }
 
-    function handleInput(e) {
-        if (e.target.tagName === 'SELECT') return;
-        let val = e.target.value.replace(/\D/g, "");
-        if (val === "") { e.target.value = ""; return; }
-        e.target.value = new Intl.NumberFormat('de-DE').format(parseInt(val));
-    }
-
-    function getRawValue(id) {
-        const el = document.getElementById(id);
-        if (!el) return 0;
-        if (el.tagName === 'SELECT') return el.value;
-        return parseFloat(el.value.replace(/\./g, "")) || 0;
-    }
-
     function changeLang(l) {
         activeLang = l;
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.lang-btn').forEach(b => {
-            if (b.innerText.toLowerCase() === l) b.classList.add('active');
-        });
+        document.getElementById(`d-lang-${l}`).classList.add('active');
+        document.getElementById(`m-lang-${l}`).classList.add('active');
+        updateActionButtons();
         refreshSidebar();
         renderActiveTool();
     }
 
+    function toggleTheme() {
+        isDarkMode = !isDarkMode;
+        document.body.classList.toggle('light-theme', !isDarkMode);
+        updateActionButtons();
+    }
+
+    function updateActionButtons() {
+        const d = translations[activeLang] || translations['en'];
+        const themeBtn = document.getElementById('theme-toggle-btn');
+        const snowBtn = document.getElementById('snow-toggle-btn');
+
+        themeBtn.querySelector('.btn-text').innerText = isDarkMode ? d.lbl.themeDark : d.lbl.themeLight;
+        themeBtn.querySelector('span:first-child').innerText = isDarkMode ? '🌙' : '☀️';
+
+        snowBtn.querySelector('.btn-text').innerText = isSnowing ? d.lbl.snowOn : d.lbl.snowOff;
+        snowBtn.querySelector('span:first-child').innerText = isSnowing ? '❄️' : '🌫️';
+    }
+
     function selectMobileTool(val) {
         activeTool = val;
+        quizStep = 0;
+        quizData = {};
         refreshSidebar();
         renderActiveTool();
     }
@@ -369,7 +486,7 @@
                 const li = document.createElement('li');
                 li.className = `nav-item ${tool.id === activeTool ? 'active' : ''}`;
                 li.innerHTML = `<span>${tool.emoji}</span> ${name}`;
-                li.onclick = () => { activeTool = tool.id; refreshSidebar(filter); renderActiveTool(); };
+                li.onclick = () => { activeTool = tool.id; quizStep = 0; quizData = {}; refreshSidebar(filter); renderActiveTool(); };
                 list.appendChild(li);
             }
             const opt = document.createElement('option');
@@ -381,6 +498,11 @@
     }
 
     function renderActiveTool() {
+        if (activeTool === 'lifestyle') {
+            renderLifestyleQuiz();
+            return;
+        }
+
         const toolIdx = toolDefinitions.findIndex(t => t.id === activeTool);
         const tool = toolDefinitions[toolIdx];
         const d = translations[activeLang] || translations['en'];
@@ -389,17 +511,8 @@
         let inputsHtml = "";
         for (let i = 0; i < tool.inputs.length; i++) {
             const key = tool.inputs[i];
-            
             if (i % 2 === 0) inputsHtml += '<div class="input-row">';
-            
-            if (["smoke", "drink", "no_pork"].includes(key)) {
-                inputsHtml += `<div class="input-group"><label>${d.lbl[key]}</label><select id="in-${key}"><option value="yes">${d.lbl.opt_yes}</option><option value="no">${d.lbl.opt_no}</option></select></div>`;
-            } else if (key === "diet") {
-                inputsHtml += `<div class="input-group"><label>${d.lbl[key]}</label><select id="in-${key}"><option value="normal">${d.lbl.opt_normal}</option><option value="vegan">${d.lbl.opt_vegan}</option><option value="veg">${d.lbl.opt_veg}</option></select></div>`;
-            } else {
-                inputsHtml += `<div class="input-group"><label>${d.lbl[key]}</label><input type="text" id="in-${key}" value="${formatNumber(getDefaultValue(key))}" oninput="handleInput(event)"></div>`;
-            }
-
+            inputsHtml += `<div class="input-group"><label>${d.lbl[key]}</label><input type="text" id="in-${key}" value="${formatNumber(getDefaultValue(key))}" oninput="handleInput(event)"></div>`;
             if (i % 2 === 1 || i === tool.inputs.length - 1) inputsHtml += '</div>';
         }
 
@@ -414,6 +527,74 @@
         `;
     }
 
+    function renderLifestyleQuiz() {
+        const d = translations[activeLang] || translations['en'];
+        const view = document.getElementById('tool-view');
+        const tool = toolDefinitions[0];
+        const steps = tool.inputs;
+        const currentKey = steps[quizStep];
+        const progress = ((quizStep + 1) / steps.length) * 100;
+
+        let inputElement = "";
+        if (["smoke", "drink", "consume_pork"].includes(currentKey)) {
+            inputElement = `<select id="in-quiz-${currentKey}"><option value="yes" ${quizData[currentKey] === 'yes' ? 'selected' : ''}>${d.lbl.opt_yes}</option><option value="no" ${quizData[currentKey] === 'no' ? 'selected' : ''}>${d.lbl.opt_no}</option></select>`;
+        } else if (currentKey === 'diet') {
+            inputElement = `<select id="in-quiz-${currentKey}">
+                <option value="normal" ${quizData[currentKey] === 'normal' ? 'selected' : ''}>${d.lbl.opt_normal}</option>
+                <option value="vegan" ${quizData[currentKey] === 'vegan' ? 'selected' : ''}>${d.lbl.opt_vegan}</option>
+                <option value="veg" ${quizData[currentKey] === 'veg' ? 'selected' : ''}>${d.lbl.opt_veg}</option>
+            </select>`;
+        } else {
+            inputElement = `<input type="number" id="in-quiz-${currentKey}" value="${quizData[currentKey] || getDefaultValue(currentKey)}">`;
+        }
+
+        view.innerHTML = `
+            <div class="tool-card active">
+                <div class="progress-container"><div class="progress-bar" style="width: ${progress}%"></div></div>
+                <h2>${tool.emoji} ${d.h[0]}</h2>
+                <p class="tool-desc">${d.d[0]}</p>
+                <div style="margin-bottom: 30px;">
+                    <label>${d.lbl[currentKey]}</label>
+                    ${inputElement}
+                </div>
+                <div class="btn-group">
+                    ${quizStep > 0 ? `<button class="nav-btn secondary" onclick="prevQuizStep()">${d.lbl.back}</button>` : ''}
+                    <button class="nav-btn" onclick="nextQuizStep()">${quizStep === steps.length - 1 ? d.lbl.btn : d.lbl.next}</button>
+                </div>
+                <div class="result-container" id="res-box"></div>
+            </div>
+        `;
+    }
+
+    function nextQuizStep() {
+        const tool = toolDefinitions[0];
+        const steps = tool.inputs;
+        const currentKey = steps[quizStep];
+        const val = document.getElementById(`in-quiz-${currentKey}`).value;
+        quizData[currentKey] = val;
+
+        if (currentKey === 'smoke' && val === 'no') { quizStep = 4; } 
+        else if (currentKey === 'drink' && val === 'no') { quizStep = 7; } 
+        else { quizStep++; }
+
+        if (quizStep >= steps.length) { quizStep = steps.length - 1; runCalculation(); } 
+        else { renderActiveTool(); }
+    }
+
+    function prevQuizStep() {
+        if (quizStep === 7 && quizData['drink'] === 'no') { quizStep = 4; } 
+        else if (quizStep === 4 && quizData['smoke'] === 'no') { quizStep = 1; } 
+        else { quizStep--; }
+        if (quizStep < 0) quizStep = 0;
+        renderActiveTool();
+    }
+
+    function handleInput(e) {
+        let val = e.target.value.replace(/\D/g, "");
+        if (val === "") { e.target.value = ""; return; }
+        e.target.value = new Intl.NumberFormat('de-DE').format(parseInt(val));
+    }
+
     function getDefaultValue(key) {
         const defaults = { age: 25, packs: 1, smoke_start: 18, alcohol_freq: 5, drink_start: 18, start: 14, hours: 4, daily: 2, size: 100, price: 150, sprays: 5, freq: 7, pages: 300, pph: 6, min: 20, shours: 6, pday: 25, monthly: 4, salary: 45000, chours: 1, cyears: 15, shours_day: 8, syears: 10 };
         return defaults[key] || 0;
@@ -421,81 +602,48 @@
 
     function runCalculation() {
         const d = translations[activeLang] || translations['en'];
-        const vals = {};
-        const tool = toolDefinitions.find(t => t.id === activeTool);
-        tool.inputs.forEach(id => { vals[id] = getRawValue(`in-${id}`); });
-
-        if (activeTool === 'human') {
-            const age = vals.age || 1;
-            const facts = [
-                { icon: "❤️", label: d.facts[0], value: formatNumber(age * 365.25 * 24 * 60 * 75), unit: d.units[0] },
-                { icon: "🌬️", label: d.facts[1], value: formatNumber(age * 365.25 * 24 * 60 * 14), unit: d.units[1] },
-                { icon: "💇", label: d.facts[2], value: (age * 365.25 * 0.35 * 100000 / 1000000).toFixed(1), unit: d.units[2] },
-                { icon: "💩", label: d.facts[3], value: formatNumber(age * 365.25 * 0.128), unit: d.units[3] },
-                { icon: "🧪", label: d.facts[4], value: formatNumber(age * 365.25 * 1.5), unit: d.units[4] },
-                { icon: "🐍", label: d.facts[5], value: (age * 0.8).toFixed(1), unit: d.units[5] }
-            ];
-            renderHumanResults(facts);
-            return;
-        }
-
-        if (activeTool === 'oxygen') {
-            const age = vals.age || 1;
-            const co2 = age * 365.25 * 1.0;
-            const facts = [
-                { icon: "🫁", label: d.ofacts[0], value: formatNumber(age * 365.25 * 550), unit: d.ounits[0] },
-                { icon: "🏭", label: d.ofacts[1], value: formatNumber(co2), unit: d.ounits[1] },
-                { icon: "🌳", label: d.ofacts[2], value: formatNumber(Math.ceil(co2 / 22)), unit: d.ounits[2] }
-            ];
-            renderHumanResults(facts);
-            return;
-        }
 
         if (activeTool === 'lifestyle') {
+            const age = parseFloat(quizData.age) || 1;
             const res = [];
-            const age = vals.age || 1;
-
-            if (vals.smoke === 'yes') {
-                const sYears = Math.max(0, age - vals.smoke_start);
-                const totalCigs = sYears * 365.25 * vals.packs * 20;
-                const totalMoney = sYears * 365.25 * vals.packs * 4.5; // Avg 4.5e pack
-                res.push({
-                    icon: "🚬", label: d.life_res[0],
-                    value: activeLang === 'sr' ? 
-                        `Popušeno <span class="highlight">${formatNumber(totalCigs)}</span> cigareta (${formatNumber(totalCigs/20)} pakli). Potrošeno oko <span class="highlight">${formatNumber(totalMoney)} €</span>.` :
-                        `Smoked <span class="highlight">${formatNumber(totalCigs)}</span> cigarettes (${formatNumber(totalCigs/20)} packs). Spent approx <span class="highlight">${formatNumber(totalMoney)} €</span>.`
-                });
+            if (quizData.smoke === 'yes') {
+                const sYears = Math.max(0, age - parseFloat(quizData.smoke_start));
+                const packs = parseFloat(quizData.packs);
+                const totalCigs = Math.round(sYears * 365.25 * packs * 20);
+                const totalMoney = Math.round(sYears * 365.25 * packs * 5.45);
+                res.push({ icon: "🚬", label: d.life_res[0], value: activeLang === 'sr' ? `Popušeno <span class="highlight">${formatNumber(totalCigs)}</span> cigareta. Potrošeno <span class="highlight">${formatNumber(totalMoney)} €</span>.` : `Smoked <span class="highlight">${formatNumber(totalCigs)}</span> cigarettes. Spent <span class="highlight">${formatNumber(totalMoney)} €</span>.` });
             }
-
-            if (vals.drink === 'yes') {
-                const dYears = Math.max(0, age - vals.drink_start);
-                const totalDrinks = dYears * 52 * vals.alcohol_freq;
-                const totalLiters = totalDrinks * 0.5; // Avg 0.5l per drink
-                res.push({
-                    icon: "🍺", label: d.life_res[1],
-                    value: activeLang === 'sr' ?
-                        `Popijeno <span class="highlight">${formatNumber(totalDrinks)}</span> pića (~${formatNumber(totalLiters)} litara).` :
-                        `Consumed <span class="highlight">${formatNumber(totalDrinks)}</span> drinks (~${formatNumber(totalLiters)} liters).`
-                });
+            if (quizData.drink === 'yes') {
+                const dYears = Math.max(0, age - parseFloat(quizData.drink_start));
+                const totalDrinks = Math.round(dYears * 52.17 * parseFloat(quizData.alcohol_freq));
+                const totalLiters = Math.round(totalDrinks * 0.45 * 10) / 10; 
+                res.push({ icon: "🍺", label: d.life_res[1], value: activeLang === 'sr' ? `Konzumirano <span class="highlight">${formatNumber(totalLiters)} litara</span> alkohola.` : `Consumed <span class="highlight">${formatNumber(totalLiters)} liters</span> of alcohol.` });
             }
-
             let dietDesc = "";
-            const totalMeat = age * 365.25 * 0.2; // Avg 200g meat/day
-            if (vals.diet === 'vegan') dietDesc = activeLang === 'sr' ? `Kao vegan, spasio si oko <span class="highlight">${formatNumber(age * 300)}</span> životinja.` : `As a vegan, you saved approx <span class="highlight">${formatNumber(age * 300)}</span> animals.`;
-            else if (vals.diet === 'veg') dietDesc = activeLang === 'sr' ? `Kao vegetarijanac, poštedeo si <span class="highlight">${formatNumber(age * 150)}</span> životinja.` : `As a vegetarian, you spared <span class="highlight">${formatNumber(age * 150)}</span> animals.`;
-            else dietDesc = activeLang === 'sr' ? `Pojeo si oko <span class="highlight">${formatNumber(totalMeat)} kg</span> mesa do sada.` : `You ate approx <span class="highlight">${formatNumber(totalMeat)} kg</span> of meat so far.`;
-
-            if (vals.no_pork === 'yes') dietDesc += activeLang === 'sr' ? ` Izbegao si <span class="highlight">~${formatNumber(age * 35)} kg</span> svinjetine.` : ` You avoided <span class="highlight">~${formatNumber(age * 35)} kg</span> of pork.`;
-
+            const totalMeat = Math.round(age * 365.25 * 0.228);
+            if (quizData.diet === 'vegan') dietDesc = activeLang === 'sr' ? `Spasio si <span class="highlight">${formatNumber(age * 365)}</span> životinja.` : `Saved <span class="highlight">${formatNumber(age * 365)}</span> animals.`;
+            else if (quizData.diet === 'veg') dietDesc = activeLang === 'sr' ? `Poštedeo si <span class="highlight">${formatNumber(age * 182)}</span> životinja.` : `Spared <span class="highlight">${formatNumber(age * 182)}</span> animals.`;
+            else dietDesc = activeLang === 'sr' ? `Pojeo si <span class="highlight">${formatNumber(totalMeat)} kg</span> mesa.` : `Ate <span class="highlight">${formatNumber(totalMeat)} kg</span> of meat.`;
+            if (quizData.consume_pork === 'no') dietDesc += activeLang === 'sr' ? ` Izbegao si <span class="highlight">~${formatNumber(age * 44.5)} kg</span> svinjetine.` : ` Avoided <span class="highlight">~${formatNumber(age * 44.5)} kg</span> of pork.`;
             res.push({ icon: "🍽️", label: d.life_res[2], value: dietDesc });
-
             renderHumanResults(res);
             return;
         }
 
-        const years = Math.max(0, vals.age - (vals.start || 0));
-        // Logic for other tools...
-        renderResultsArea(activeTool, activeTool, ["Calculation processed.", "Results ready."]);
+        const tool = toolDefinitions.find(t => t.id === activeTool);
+        const vals = {};
+        tool.inputs.forEach(id => { vals[id] = parseFloat(document.getElementById(`in-${id}`).value.replace(/\./g, "")) || 0; });
+
+        if (activeTool === 'human') {
+            const age = vals.age || 1;
+            renderHumanResults([{ icon: "❤️", label: d.facts[0], value: formatNumber(age * 365.25 * 24 * 60 * 72), unit: d.units[0] }, { icon: "🌬️", label: d.facts[1], value: formatNumber(age * 365.25 * 24 * 60 * 14), unit: d.units[1] }, { icon: "🐍", label: d.facts[5], value: (age * 0.85).toFixed(1), unit: d.units[5] }]);
+        } else if (activeTool === 'oxygen') {
+            const age = vals.age || 1;
+            const co2 = age * 365.25 * 1.05;
+            renderHumanResults([{ icon: "🫁", label: d.ofacts[0], value: formatNumber(age * 365.25 * 550), unit: d.ounits[0] }, { icon: "🏭", label: d.ofacts[1], value: formatNumber(co2), unit: d.ounits[1] }, { icon: "🌳", label: d.ofacts[2], value: formatNumber(Math.ceil(co2 / 21)), unit: d.ounits[2] }]);
+        } else {
+            renderResultsArea(activeTool, activeTool, ["Processing...", "Results generated."]);
+        }
     }
 
     function renderHumanResults(data) {
@@ -530,31 +678,33 @@
         const d = translations[activeLang] || translations['en'];
         const aiBtn = document.createElement('button');
         aiBtn.className = "ai-btn";
-        aiBtn.innerHTML = `<div class="spinner"></div><span class="btn-label">${d.lbl.ai_btn}</span>`;
-        aiBtn.onclick = () => getAIAnalysis();
+        aiBtn.innerHTML = `<span class="btn-label">${d.lbl.ai_btn}</span>`;
+        aiBtn.onclick = () => {
+            let aiBox = document.getElementById('ai-box');
+            if (!aiBox) {
+                aiBox = document.createElement('div');
+                aiBox.id = `ai-box`;
+                aiBox.className = "ai-block";
+                container.appendChild(aiBox);
+            }
+            aiBox.style.display = "block";
+            aiBox.innerHTML = `<span class="ai-title">${d.lbl.ai_title}</span><div class="res-value" id="ai-val">${d.lbl.soon}</div>`;
+        };
         container.appendChild(aiBtn);
-
-        const aiBlock = document.createElement('div');
-        aiBlock.id = `ai-box`;
-        aiBlock.className = "ai-block";
-        aiBlock.innerHTML = `<span class="ai-title">${d.lbl.ai_title}</span><div class="res-value" id="ai-val">...</div>`;
-        container.appendChild(aiBlock);
     }
 
-    function getAIAnalysis() {
-        const d = translations[activeLang] || translations['en'];
-        const aiVal = document.getElementById('ai-val');
-        const aiBox = document.getElementById('ai-box');
-        aiBox.style.display = "block";
-        aiVal.innerText = d.lbl.soon;
-    }
-
-    function filterTools() {
-        refreshSidebar(document.getElementById('search').value);
-    }
-
+    // Snow logic
+    const canvas = document.getElementById('snow-canvas');
+    const ctx = canvas.getContext('2d');
+    let snowflakes = [];
+    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    function createSnowflakes() { snowflakes = []; for (let i = 0; i < 150; i++) { snowflakes.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 4 + 1, speed: Math.random() * 1 + 0.5, wind: Math.random() * 0.5 - 0.25 }); } }
+    function updateSnow() { if (!isSnowing) return; ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = isDarkMode ? "white" : "#cbd5e1"; ctx.beginPath(); snowflakes.forEach(f => { ctx.moveTo(f.x, f.y); ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2); f.y += f.speed; f.x += f.wind; if (f.y > canvas.height) f.y = -10; if (f.x > canvas.width) f.x = 0; if (f.x < 0) f.x = canvas.width; }); ctx.fill(); requestAnimationFrame(updateSnow); }
+    function toggleSnow() { isSnowing = !isSnowing; canvas.style.display = isSnowing ? 'block' : 'none'; if (isSnowing) { resizeCanvas(); createSnowflakes(); updateSnow(); } updateActionButtons(); }
+    window.addEventListener('resize', resizeCanvas);
     refreshSidebar();
     renderActiveTool();
+    updateActionButtons();
 </script>
 </body>
 </html>

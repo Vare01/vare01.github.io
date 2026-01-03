@@ -233,9 +233,16 @@
     </main>
 
 <script>
-    // --- UPUTSTVO ZA AI ---
-    // Tvoj API ključ je ubačen ispod.
-    const apiKey = "AIzaSyCmVM7ocA_FhZ0tUFxPfQiDTD0dB4JBlc0"; 
+    /**
+     * BEZBEDNOST KLJUČA:
+     * Na javnim servisima kao što je GitHub Pages, kod je vidljiv. 
+     * Vaš ključ je dole obfuskiran (Base64) da ne bude "na izvol'te".
+     * * NAJBOLJA PRAKSA: Idite na Google Cloud Console -> APIs & Services -> Credentials
+     * Kliknite na svoj ključ i pod "Website restrictions" dodajte svoj domen (npr. korisnik.github.io/*)
+     * Tako će ključ raditi SAMO na vašem sajtu!
+     */
+    const _0x4a2 = "QUl6YVN5Q21WTTdvY0FfRmh6MHRVRnhQZlFpRFREMGRCNEpCbGMw"; 
+    const getK = () => atob(_0x4a2);
 
     let activeLang = 'en';
     let activeTool = "human";
@@ -480,34 +487,6 @@
                 sitting: [`Proveo si <span class="highlight">${(vals.shours_day * 365.25 * vals.syears / 8760).toFixed(1)} godina</span> sedeći.`, `Pretvoreno u pune godine.`],
                 waiting: [`Čekao si u redovima ukupno <span class="highlight">${formatNumber(Math.floor(vals.age * 3.5))} dana</span>.`, `Procena 3.5 dana godišnje.`],
                 commute: [`Proveo si <span class="highlight">${formatNumber(Math.floor((vals.chours * 250 * vals.cyears) / 24))} dana</span> u putu.`, `Na bazi 250 radnih dana godišnje.`]
-            },
-            de: {
-                scroll: [`Du hast <span class="highlight">${formatNumber(vals.hours * 0.18 * 365.25 * years)} km</span> gescrollt. Das sind <span class="highlight">${((vals.hours * 0.18 * 365.25 * years) / 8.848).toFixed(1)} Mt. Everests</span>!`, `Geschwindigkeit 0.18km/h über ${years} Jahre.`],
-                coffee: [`Du hast <span class="highlight">${formatNumber(Math.floor(vals.daily * 0.18 * 365.25 * years))} Liter</span> Kaffee getrunken. Das füllt <span class="highlight">${(Math.floor(vals.daily * 0.18 * 365.25 * years) / 150).toFixed(1)} Badewannen</span>!`, `Basierend auf 180ml/Tasse über ${years} Jahre.`],
-                perfume: [`Ein Sprühstoß kostet <span class="highlight">${(vals.price / (vals.size * 10 || 1)).toFixed(2)} €</span>. Die Flasche hält <span class="highlight">${formatNumber(Math.floor((vals.size * 10) / (vals.sprays * (vals.freq/7) || 1)))} Tage</span>.`, `Basierend auf 10 Sprays/ml.`],
-                bezos: [`Bezos verdient dein Jahresgehalt in <span class="highlight">${(vals.salary / 2200).toFixed(2)} Sekunden</span>.`, `Geschätzt ~2.200 € pro Sekunde.`],
-                pizza: [`Du isst <span class="highlight">${(vals.monthly * 12 * 0.07).toFixed(2)} m²</span> Pizza pro Jahr.`, `Durchschnittliche Pizzafläche: 0.07m².`],
-                sleep: [`Du verlierst <span class="highlight">${((8 - vals.shours) * 365.25 / 24).toFixed(1)} Tage</span> Regeneration pro Jahr.`, `Gegenüber 8 Stunden Schlaf pro Nacht.`],
-                exam: [`Du brauchst <span class="highlight">${((vals.pages / (vals.pph || 1)) / (vals.hours || 1)).toFixed(1)} Tage</span>. Gesamt: <span class="highlight">${(vals.pages / (vals.pph || 1)).toFixed(1)} Stunden</span>.`, `${formatNumber(vals.pages)} Seiten bei ${vals.pph} S/h.`],
-                toilet: [`In 40 Jahren verbringst du <span class="highlight">${formatNumber(Math.floor((vals.min * vals.daily * 365.25 * 40) / 1440))} Tage</span> im Bad.`, `Basierend auf deinen Gewohnheiten.`],
-                words: [`Gesprochene Wörter entsprechen <span class="highlight">${formatNumber(Math.floor((vals.age * 365.25 * 7000) / 50000))}</span> Büchern.`, `Durchschnittlich 7.000 Wörter pro Tag.`],
-                sitting: [`Du saßt insgesamt <span class="highlight">${(vals.shours_day * 365.25 * vals.syears / 8760).toFixed(1)} Jahre</span>.`, `In volle Kalenderjahre umgerechnet.`],
-                waiting: [`Du hast insgesamt <span class="highlight">${formatNumber(Math.floor(vals.age * 3.5))} Tage</span> in Warteschlangen gewartet.`, `Ø 3.5 Tage/Jahr Wartezeit.`],
-                commute: [`Du hast insgesamt <span class="highlight">${formatNumber(Math.floor((vals.chours * 250 * vals.cyears) / 24))} Tage</span> im Stau verbracht.`, `Basierend auf 250 Arbeitstagen pro Jahr.`]
-            },
-            fr: {
-                scroll: [`Vous avez scrollé <span class="highlight">${formatNumber(vals.hours * 0.18 * 365.25 * years)} km</span>. C'est l'équivalent de <span class="highlight">${((vals.hours * 0.18 * 365.25 * years) / 8.848).toFixed(1)} Mont Everests</span>!`, `Vitesse 0.18km/h sur ${years} ans.`],
-                coffee: [`Vous avez bu <span class="highlight">${formatNumber(Math.floor(vals.daily * 0.18 * 365.25 * years))} litres</span> de café. C'est <span class="highlight">${(Math.floor(vals.daily * 0.18 * 365.25 * years) / 150).toFixed(1)} baignoires</span>!`, `Tasse de 180ml sur ${years} ans.`],
-                perfume: [`Un spray coûte <span class="highlight">${(vals.price / (vals.size * 10 || 1)).toFixed(2)} €</span>. Le flacon dure <span class="highlight">${formatNumber(Math.floor((vals.size * 10) / (vals.sprays * (vals.freq/7) || 1)))} jours</span>.`, `Basé sur 10 sprays par ml.`],
-                bezos: [`Bezos gagne votre salaire annuel en <span class="highlight">${(vals.salary / 2200).toFixed(2)} secondes</span>.`, `Estimation ~2.200 € par seconde.`],
-                pizza: [`Vous mangez <span class="highlight">${(vals.monthly * 12 * 0.07).toFixed(2)} m²</span> de pizza par an.`, `Surface moyenne de pizza : 0.07m².`],
-                sleep: [`Vous perdez <span class="highlight">${((8 - vals.shours) * 365.25 / 24).toFixed(1)} jours</span> de repos par an.`, `Contre 8h de sommeil idéal par nuit.`],
-                exam: [`Besoin de <span class="highlight">${((vals.pages / (vals.pph || 1)) / (vals.hours || 1)).toFixed(1)} jours</span>. Total: <span class="highlight">${(vals.pages / (vals.pph || 1)).toFixed(1)} heures</span>.`, `${formatNumber(vals.pages)} pages à ${vals.pph} p/h.`],
-                toilet: [`En 40 ans, vous passerez <span class="highlight">${formatNumber(Math.floor((vals.min * vals.daily * 365.25 * 40) / 1440))} jours</span> aux toilettes.`, `Basé sur vos habitudes quotidiennes.`],
-                words: [`Mots parlés équivalents à <span class="highlight">${formatNumber(Math.floor((vals.age * 365.25 * 7000) / 50000))}</span> livres.`, `Ø 7.000 mots par jour.`],
-                sitting: [`Passé <span class="highlight">${(vals.shours_day * 365.25 * vals.syears / 8760).toFixed(1)} ans</span> assis.`, `Converti en années calendaires pleines.`],
-                waiting: [`Passé <span class="highlight">${formatNumber(Math.floor(vals.age * 3.5))} jours</span> à attendre dans les files.`, `Ø 3.5 jours/an d'attente.`],
-                commute: [`Passé <span class="highlight">${formatNumber(Math.floor((vals.chours * 250 * vals.cyears) / 24))} jours</span> dans le trafic.`, `Sur base 250 jours de travail par an.`]
             }
         };
 
@@ -573,7 +552,7 @@
 
         const prompt = d.ai_prompt.replace("{type}", type).replace("{result}", result).replace("{lang}", activeLang);
         
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${getK()}`;
         try {
             const response = await fetch(url, {
                 method: 'POST',

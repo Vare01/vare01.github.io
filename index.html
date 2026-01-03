@@ -16,7 +16,6 @@
             --input-bg: #0b0f1a;
         }
 
-        /* Light Theme Variables */
         body.light-theme {
             --bg: #f1f5f9;
             --card: #ffffff;
@@ -37,7 +36,6 @@
             transition: background 0.3s, color 0.3s;
         }
 
-        /* Sidebar - Desktop */
         .sidebar {
             width: var(--sidebar-w);
             background: var(--card);
@@ -46,36 +44,21 @@
             padding: 25px; flex-shrink: 0; z-index: 100;
         }
 
-        .logo-container {
-            margin-bottom: 25px;
-            position: relative;
-        }
-
+        .logo-container { margin-bottom: 25px; position: relative; }
         .logo {
             font-size: 1.4rem; font-weight: 900; color: var(--primary);
-            letter-spacing: -1px;
-            display: flex; align-items: center; gap: 10px;
-            position: relative;
+            letter-spacing: -1px; display: flex; align-items: center; gap: 10px; position: relative;
         }
 
         .santa-hat {
-            position: absolute;
-            top: -12px;
-            left: 10px;
-            width: 30px;
-            transform: rotate(-15deg);
-            pointer-events: none;
+            position: absolute; top: -12px; left: 10px; width: 30px;
+            transform: rotate(-15deg); pointer-events: none;
         }
 
         .beta-tag {
-            font-size: 0.65rem;
-            background: rgba(128, 128, 128, 0.1);
-            color: #94a3b8;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 600;
-            margin-top: 4px;
-            display: inline-block;
+            font-size: 0.65rem; background: rgba(128, 128, 128, 0.1);
+            color: #94a3b8; padding: 2px 6px; border-radius: 4px;
+            font-weight: 600; margin-top: 4px; display: inline-block;
         }
 
         .search-box {
@@ -84,120 +67,51 @@
             width: 100%; box-sizing: border-box; outline: none; font-size: 0.85rem;
         }
 
-        .nav-list {
-            list-style: none; padding: 0; margin: 0;
-            overflow-y: auto; flex-grow: 1;
-        }
-
+        .nav-list { list-style: none; padding: 0; margin: 0; overflow-y: auto; flex-grow: 1; }
         .nav-item {
             padding: 10px 14px; border-radius: 10px; cursor: pointer;
             margin-bottom: 6px; transition: all 0.2s ease;
-            font-size: 0.85rem; color: #94a3b8;
-            display: flex; align-items: center; gap: 10px;
+            font-size: 0.85rem; color: #94a3b8; display: flex; align-items: center; gap: 10px;
         }
-
         .nav-item:hover { background: rgba(0, 255, 136, 0.05); color: var(--text); }
-        .nav-item.active {
-            background: var(--primary); color: #000; font-weight: 700;
-        }
+        .nav-item.active { background: var(--primary); color: #000; font-weight: 700; }
 
-        /* Top Actions (Theme & Snow) */
-        .top-actions {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-            z-index: 1001;
-        }
-
+        .top-actions { position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1001; }
         .action-btn {
-            background: var(--card);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 8px 12px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s;
+            background: var(--card); border: 1px solid var(--border); color: var(--text);
+            padding: 8px 12px; border-radius: 10px; cursor: pointer;
+            font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 6px;
         }
-        .action-btn:hover { border-color: var(--primary); }
 
-        /* Mobile Header */
         .mobile-header {
-            display: none;
-            width: 100%;
-            background: var(--card);
-            padding: 10px 15px;
-            border-bottom: 1px solid var(--border);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            box-sizing: border-box;
-            flex-direction: column;
-            gap: 5px;
+            display: none; width: 100%; background: var(--card); padding: 10px 15px;
+            border-bottom: 1px solid var(--border); position: fixed; top: 0; left: 0;
+            z-index: 1000; box-sizing: border-box; flex-direction: column; gap: 5px;
         }
-
-        .mobile-top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
+        .mobile-top-bar { display: flex; justify-content: space-between; align-items: center; width: 100%; }
         .mobile-tool-select {
-            background: var(--input-bg);
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            outline: none;
-            width: 100%;
-            font-weight: 600;
+            background: var(--input-bg); color: var(--primary); border: 1px solid var(--primary);
+            padding: 10px; border-radius: 10px; font-size: 0.95rem; outline: none; width: 100%; font-weight: 600;
         }
 
-        /* Main Content */
         .main-content {
-            flex-grow: 1; display: flex; flex-direction: column;
-            align-items: center; justify-content: flex-start;
-            padding: 60px 20px 40px; overflow-y: auto; position: relative;
+            flex-grow: 1; display: flex; flex-direction: column; align-items: center;
+            justify-content: flex-start; padding: 60px 20px 40px; overflow-y: auto; position: relative;
         }
 
-        .lang-bar {
-            display: flex; gap: 5px;
-        }
-
-        .sidebar .lang-bar {
-            margin-top: auto;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-        }
-
+        .lang-bar { display: flex; gap: 5px; }
+        .sidebar .lang-bar { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border); }
         .lang-btn {
             background: var(--card); border: 1px solid var(--border); color: var(--text);
-            padding: 6px 10px; border-radius: 8px; cursor: pointer;
-            font-size: 0.75rem; font-weight: 600; flex: 1;
-            text-align: center;
+            padding: 6px 10px; border-radius: 8px; cursor: pointer; font-size: 0.75rem; font-weight: 600; flex: 1;
         }
-
         .lang-btn.active { border-color: var(--primary); color: var(--primary); background: rgba(0, 255, 136, 0.1); }
 
         .tool-card {
             background: var(--card); padding: 30px; border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1); width: 100%;
-            max-width: 600px; border: 1px solid var(--border);
-            margin-bottom: 40px;
-            min-height: 350px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            z-index: 10;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1); width: 100%; max-width: 600px;
+            border: 1px solid var(--border); margin-bottom: 40px; min-height: 420px;
+            display: flex; flex-direction: column; position: relative; z-index: 10;
         }
 
         h2 { margin: 0 0 10px 0; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
@@ -208,42 +122,33 @@
 
         label {
             display: block; margin-bottom: 12px; font-size: 0.85rem;
-            color: #94a3b8; text-transform: uppercase; font-weight: 800;
-            letter-spacing: 0.5px;
+            color: #94a3b8; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px;
         }
 
         input, select {
             width: 100%; padding: 14px; background: var(--input-bg);
             border: 1px solid var(--border); border-radius: 12px; color: var(--text);
-            font-size: 1rem; box-sizing: border-box; transition: border 0.3s;
+            font-size: 1rem; box-sizing: border-box;
         }
 
-        input:focus, select:focus { border-color: var(--primary); outline: none; }
-
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            margin-top: auto;
+        .calc-btn {
+            width: 100%; padding: 16px; background: var(--primary); color: #000;
+            border: none; border-radius: 12px; font-weight: 800; cursor: pointer;
+            text-transform: uppercase; font-size: 0.9rem; margin-top: auto; flex-shrink: 0;
         }
 
-        .calc-btn, .nav-btn {
-            flex: 1; padding: 16px; background: var(--primary);
-            color: #000; border: none; border-radius: 12px; font-weight: 800;
-            cursor: pointer; text-transform: uppercase; font-size: 0.9rem;
+        .btn-group { display: flex; gap: 10px; margin-top: auto; }
+        .nav-btn {
+            flex: 1; padding: 16px; background: var(--primary); color: #000;
+            border: none; border-radius: 12px; font-weight: 800; cursor: pointer; text-transform: uppercase;
         }
-
-        .nav-btn.secondary {
-            background: rgba(128, 128, 128, 0.1);
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
+        .nav-btn.secondary { background: rgba(128, 128, 128, 0.1); color: var(--text); border: 1px solid var(--border); }
 
         .ai-btn {
-            background: var(--accent); color: white; padding: 18px;
-            border-radius: 14px; font-weight: 800; border: none; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; gap: 12px; 
-            margin-top: 20px; width: 100%; font-size: 1.1rem;
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
+            background: var(--accent); color: white; padding: 18px; border-radius: 14px;
+            font-weight: 800; border: none; cursor: pointer; display: flex;
+            align-items: center; justify-content: center; gap: 12px; margin-top: 20px;
+            width: 100%; font-size: 1.1rem; box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
         }
 
         .result-container { margin-top: 30px; display: none; width: 100%; }
@@ -252,61 +157,33 @@
             padding: 18px; margin-bottom: 12px; border: 1px solid var(--border);
         }
 
-        .ai-block {
-            background: rgba(59, 130, 246, 0.05); border: 1px solid var(--accent);
-            border-left-width: 4px; padding: 18px; border-radius: 16px;
-            margin-top: 15px; display: none;
-        }
-
         .res-title, .ai-title { color: var(--primary); font-size: 0.65rem; font-weight: 900; text-transform: uppercase; margin-bottom: 5px; display: block; }
         .res-value { font-size: 1rem; font-weight: 500; line-height: 1.5; }
         .highlight { color: var(--primary); font-weight: 800; }
 
-        .progress-container {
-            width: 100%; height: 6px; background: var(--border);
-            border-radius: 10px; margin-bottom: 30px; overflow: hidden;
-        }
-        .progress-bar {
-            height: 100%; background: var(--primary); transition: width 0.4s ease;
-        }
+        .progress-container { width: 100%; height: 6px; background: var(--border); border-radius: 10px; margin-bottom: 30px; overflow: hidden; }
+        .progress-bar { height: 100%; background: var(--primary); transition: width 0.4s ease; }
 
-        /* Snow Canvas */
-        #snow-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 999;
-            display: none;
-        }
+        #snow-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; display: none; }
 
-        /* Responsive UI */
         @media (max-width: 850px) {
             .sidebar { display: none; }
             .mobile-header { display: flex; }
-            .main-content { padding-top: 140px; padding-left: 15px; padding-right: 15px; height: auto; overflow: visible; }
-            body { height: auto; overflow-y: auto; }
-            .tool-card { padding: 20px; margin-top: 0; }
+            .main-content { padding-top: 140px; padding-left: 15px; padding-right: 15px; height: auto; }
+            .tool-card { padding: 20px; min-height: 450px; }
             .top-actions { top: 110px; right: 15px; scale: 0.9; }
         }
     </style>
 </head>
-<body>
+<body class="dark-theme">
 
     <canvas id="snow-canvas"></canvas>
 
-    <!-- Mobile Header -->
     <header class="mobile-header">
         <div class="mobile-top-bar">
             <div class="logo-container">
                 <div class="logo">
-                    <svg class="santa-hat" viewBox="0 0 100 100">
-                        <path d="M20,50 Q50,0 80,50 L85,60 Q50,45 15,60 Z" fill="#ff4444" stroke="#fff" stroke-width="2"/>
-                        <circle cx="85" cy="60" r="8" fill="#fff" />
-                        <path d="M15,60 Q50,50 85,60 L85,70 Q50,60 15,70 Z" fill="#fff" />
-                    </svg>
+                    <svg class="santa-hat" viewBox="0 0 100 100"><path d="M20,50 Q50,0 80,50 L85,60 Q50,45 15,60 Z" fill="#ff4444" stroke="#fff" stroke-width="2"/><circle cx="85" cy="60" r="8" fill="#fff" /><path d="M15,60 Q50,50 85,60 L85,70 Q50,60 15,70 Z" fill="#fff" /></svg>
                     SHOCKING MATH ⚡
                 </div>
                 <div class="beta-tag">BETA v1.0</div>
@@ -319,15 +196,10 @@
         <select class="mobile-tool-select" id="mobile-nav" onchange="selectMobileTool(this.value)"></select>
     </header>
 
-    <!-- Desktop Sidebar -->
     <aside class="sidebar">
         <div class="logo-container">
             <div class="logo">
-                <svg class="santa-hat" viewBox="0 0 100 100">
-                    <path d="M20,50 Q50,0 80,50 L85,60 Q50,45 15,60 Z" fill="#ff4444" stroke="#fff" stroke-width="2"/>
-                    <circle cx="85" cy="60" r="8" fill="#fff" />
-                    <path d="M15,60 Q50,50 85,60 L85,70 Q50,60 15,70 Z" fill="#fff" />
-                </svg>
+                <svg class="santa-hat" viewBox="0 0 100 100"><path d="M20,50 Q50,0 80,50 L85,60 Q50,45 15,60 Z" fill="#ff4444" stroke="#fff" stroke-width="2"/><circle cx="85" cy="60" r="8" fill="#fff" /><path d="M15,60 Q50,50 85,60 L85,70 Q50,60 15,70 Z" fill="#fff" /></svg>
                 SHOCKING MATH ⚡
             </div>
             <div class="beta-tag">BETA v1.0</div>
@@ -342,12 +214,8 @@
 
     <main class="main-content">
         <div class="top-actions">
-            <button class="action-btn" onclick="toggleSnow()" id="snow-toggle-btn">
-                <span>❄️</span> <span class="btn-text">Snow Off</span>
-            </button>
-            <button class="action-btn" onclick="toggleTheme()" id="theme-toggle-btn">
-                <span>🌙</span> <span class="btn-text">Dark</span>
-            </button>
+            <button class="action-btn" onclick="toggleSnow()" id="snow-toggle-btn"><span>🌫️</span> <span class="btn-text">Snow Off</span></button>
+            <button class="action-btn" onclick="toggleTheme()" id="theme-toggle-btn"><span>🌙</span> <span class="btn-text">Dark</span></button>
         </div>
         <div id="tool-view" style="width: 100%; display: flex; justify-content: center;"></div>
     </main>
@@ -368,9 +236,9 @@
         { id: "coffee", emoji: "☕", inputs: ["age", "start", "daily"] },
         { id: "perfume", emoji: "🧴", inputs: ["size", "price", "sprays", "freq"] },
         { id: "exam", emoji: "📚", inputs: ["pages", "pph", "hours"] },
-        { id: "toilet", emoji: "🚽", inputs: ["min", "daily"] },
+        { id: "toilet", emoji: "🚽", inputs: ["age", "min", "daily"] },
         { id: "sleep", emoji: "😴", inputs: ["shours"] },
-        { id: "books", emoji: "📖", inputs: ["pday"] },
+        { id: "books", emoji: "📖", inputs: ["age", "pday"] },
         { id: "bezos", emoji: "💰", inputs: ["salary"] },
         { id: "pizza", emoji: "🍕", inputs: ["monthly"] },
         { id: "commute", emoji: "🚗", inputs: ["chours", "cyears"] },
@@ -383,23 +251,14 @@
         en: {
             nav: ["Lifestyle Quiz", "Human Body Stats", "Oxygen Factory", "Scroll Everest", "Coffee Ocean", "Perfume Value", "Exam Timer", "Toilet Warp", "Sleep Debt", "Book Worm", "Bezos vs You", "Pizza Surface", "Commute Life", "Words Library", "Sitting Life", "Waiting Line"],
             h: ["Lifestyle Shock Quiz", "Human Body Facts", "Oxygen Factory", "Scroll Distance", "Coffee Ocean", "Perfume Value", "Exam Prep", "Toilet Time", "Sleep Debt", "Book Worm", "The Bezos Gap", "Pizza Surface", "Traffic Trap", "Talking Library", "The Chair Trap", "Queue Specialist"],
-            d: ["Discover the total volume of your habits.", "Biological impact of your existence.", "Amount of oxygen you've consumed and CO2 produced.", "Vertical distance you've scrolled.", "The literal ocean of caffeine consumed.", "True cost of smelling good.", "Study sessions based on volume.", "Life spent on the porcelain throne.", "Cost of staying awake vs rest.", "Knowledge volume in books.", "Billionaire vs your annual wage.", "Total surface of dough eaten.", "Time lost in traffic jams.", "Library of words you've spoken.", "Impact of a sedentary lifestyle.", "Time spent waiting in queues."],
+            d: ["Discover the total volume of your habits.", "Biological impact of your existence.", "Amount of oxygen you've consumed and CO2 produced.", "Vertical distance you've scrolled.", "The literal ocean of caffeine consumed.", "True cost of smelling good.", "Study sessions based on volume.", "Life spent on the porcelain throne.", "Cost of staying awake vs rest.", "Volume of books you have consumed.", "Billionaire vs your annual wage.", "Total surface of dough eaten.", "Time lost in traffic jams.", "Library of words you've spoken.", "Impact of a sedentary lifestyle.", "Time spent waiting in queues."],
             lbl: {
-                age: "What is your current age?", smoke: "Do you smoke cigarettes?", packs: "How many packs do you smoke per day?", smoke_start: "At what age did you start smoking?",
-                drink: "Do you consume alcohol?", alcohol_freq: "How many drinks do you have per week?", drink_start: "At what age did you start drinking?",
-                diet: "What is your primary diet?", consume_pork: "Do you consume pork?",
-                start: "Started at", hours: "Hours/Day", daily: "Times/Day", size: "Size (ml)", price: "Price (€)",
-                sprays: "Sprays", freq: "Days/Week", pages: "Pages", pph: "Pages/h", min: "Min/Session",
-                shours: "Sleep Hours", pday: "Pages/Day", monthly: "Pizzas/Month", salary: "Salary (€)", 
-                chours: "Hours/Day", cyears: "Years", shours_day: "Hours Sitting", syears: "Years",
-                btn: "Calculate 🚀", ai_btn: "Get ✨ AI Insight", ai_loading: "Analyzing...", ai_title: "AI Analysis ✨",
-                soon: "Feature coming soon! 🚀",
-                opt_yes: "Yes", opt_no: "No", opt_normal: "Normal (Everything)", opt_vegan: "Vegan", opt_veg: "Vegetarian",
-                next: "Next", back: "Back",
-                snowOn: "Snow On", snowOff: "Snow Off", themeDark: "Dark", themeLight: "Light"
+                age: "Your age", smoke: "Do you smoke?", packs: "Packs/Day", smoke_start: "Smoking since", drink: "Do you drink?", alcohol_freq: "Drinks/Week", drink_start: "Drinking since", diet: "Diet", consume_pork: "Consume pork?",
+                start: "Started at", hours: "Hours/Day", daily: "Times/Day", size: "Size (ml)", price: "Price (€)", sprays: "Sprays", freq: "Days/Week", pages: "Pages", pph: "Pages/h", min: "Min/Session", shours: "Sleep Hours", pday: "Pages/Day", monthly: "Pizzas/Month", salary: "Salary (€)", chours: "Hours/Day", cyears: "Years", shours_day: "Hours Sitting", syears: "Years",
+                btn: "Calculate 🚀", ai_btn: "Get ✨ AI Insight", ai_loading: "Analyzing...", ai_title: "AI Analysis ✨", soon: "Feature coming soon! 🚀", opt_yes: "Yes", opt_no: "No", opt_normal: "Normal", opt_vegan: "Vegan", opt_veg: "Vegetarian", next: "Next", back: "Back", themeDark: "Dark", themeLight: "Light", snowOn: "Snow On", snowOff: "Snow Off"
             },
             res_t: ["The Shock 😱", "The Math 📊"],
-            facts: ["Heartbeat", "Breaths", "Hair", "Feces", "Urine", "Skin"],
+            facts: ["Heartbeat", "Breaths", "Hair growth", "Feces", "Urine", "Dead skin"],
             units: ["beats", "times", "km", "kg", "L", "kg"],
             ofacts: ["Oxygen Consumed", "CO2 Produced", "Trees Required"],
             ounits: ["liters", "kg", "trees"],
@@ -410,18 +269,9 @@
             h: ["Šok kviz navika", "Činjenice o telu", "Fabrika kiseonika", "Scroll kilometraža", "Okean kafe", "Vrednost parfema", "Spremanje ispita", "WC vremenska mašina", "Dug spavanja", "Čitač knjiga", "Bezosov ponor", "Površina pice", "Zemlja u gužvi", "Govorna biblioteka", "Zamka stolice", "Specijalista za redove"],
             d: ["Otkrij pravu zapreminu tvojih navika.", "Izračunaj svoj biološki uticaj do sada.", "Količina kiseonika koju si potrošio i CO2 koji si proizveo.", "Koliko si visoko skrolovao vertikalno.", "Doslovni okean kofeina koji si popio.", "Prava cena tvog dobrog mirisa.", "Isplaniraj učenje na osnovu strana.", "Vreme provedeno na porcelanskom tronu.", "Cena nespavanja u odnosu na odmor.", "Zapremina znanja u knjigama.", "Koliko brzo Bezos zaradi tvoju platu.", "Ukupna površina testa koju si pojeo.", "Vreme izgubljeno u saobraćaju.", "Biblioteka reči koje si izgovorio.", "Fizički uticaj sedenja.", "Vreme provedeno u redovima."],
             lbl: {
-                age: "Koliko imaš godina?", smoke: "Da li pušiš cigarete?", packs: "Koliko pakli dnevno pušiš?", smoke_start: "Sa koliko godina si počeo da pušiš?",
-                drink: "Da li konzumiraš alkohol?", alcohol_freq: "Koliko pića popiješ nedeljno?", drink_start: "Sa koliko godina si počeo da piješ?",
-                diet: "Tip ishrane", consume_pork: "Da li konzumiraš svinjetinu?",
-                start: "Počeo sa", hours: "Sati dnevno", daily: "Dnevno puta", size: "Veličina (ml)", price: "Cena (€)",
-                sprays: "Prskanja", freq: "Dana/Nedeljno", pages: "Ukupno strana", pph: "Strana/h", min: "Min/Sesiji",
-                shours: "Sati sna", pday: "Strana/Dan", monthly: "Pica mesečno", salary: "Plata (€)",
-                chours: "Sati/Dan", cyears: "Godina puta", shours_day: "Sati sedenja", syears: "Godina sedenja",
-                btn: "Izračunaj 🚀", ai_btn: "Zatraži ✨ AI Uvid", ai_loading: "Analiziram...", ai_title: "AI Analiza ✨",
-                soon: "Funkcija stiže uskoro! 🚀",
-                opt_yes: "Da", opt_no: "Ne", opt_normal: "Normalna (sve)", opt_vegan: "Vegan", opt_veg: "Vegetarijanac",
-                next: "Dalje", back: "Nazad",
-                snowOn: "Sneg On", snowOff: "Sneg Off", themeDark: "Tamna", themeLight: "Svetla"
+                age: "Godine", smoke: "Pušač?", packs: "Pakli/Dan", smoke_start: "Pušiš od", drink: "Piješ?", alcohol_freq: "Pića/Nedeljno", drink_start: "Piješ od", diet: "Ishrana", consume_pork: "Svinjetina?",
+                start: "Počeo sa", hours: "Sati dnevno", daily: "Dnevno puta", size: "Veličina (ml)", price: "Cena (€)", sprays: "Prskanja", freq: "Dana/Nedeljno", pages: "Strana", pph: "Strana/h", min: "Min/Sesiji", shours: "Sati sna", pday: "Strana/Dan", monthly: "Pica/Mesec", salary: "Plata (€)", chours: "Sati/Dan", cyears: "Godina", shours_day: "Sati sedenja", syears: "Godina",
+                btn: "Izračunaj 🚀", ai_btn: "Zatraži ✨ AI Uvid", ai_loading: "Analiziram...", ai_title: "AI Analiza ✨", soon: "Funkcija stiže uskoro! 🚀", opt_yes: "Da", opt_no: "Ne", opt_normal: "Normalna", opt_vegan: "Vegan", opt_veg: "Vegetarijanac", next: "Dalje", back: "Nazad", themeDark: "Tamna", themeLight: "Svetla", snowOn: "Sneg On", snowOff: "Sneg Off"
             },
             res_t: ["Šok podatak 😱", "Matematika 📊"],
             facts: ["Otkucaji srca", "Udisaji", "Rast kose", "Izmet", "Urin", "Mrtva koža"],
@@ -432,18 +282,14 @@
         }
     };
 
-    function formatNumber(n) {
-        return new Intl.NumberFormat('de-DE').format(Math.floor(n));
-    }
+    function formatNumber(n) { return new Intl.NumberFormat('de-DE').format(Math.floor(n)); }
 
     function changeLang(l) {
         activeLang = l;
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
         document.getElementById(`d-lang-${l}`).classList.add('active');
         document.getElementById(`m-lang-${l}`).classList.add('active');
-        updateActionButtons();
-        refreshSidebar();
-        renderActiveTool();
+        updateActionButtons(); refreshSidebar(); renderActiveTool();
     }
 
     function toggleTheme() {
@@ -454,129 +300,76 @@
 
     function updateActionButtons() {
         const d = translations[activeLang] || translations['en'];
-        const themeBtn = document.getElementById('theme-toggle-btn');
-        const snowBtn = document.getElementById('snow-toggle-btn');
-
-        themeBtn.querySelector('.btn-text').innerText = isDarkMode ? d.lbl.themeDark : d.lbl.themeLight;
-        themeBtn.querySelector('span:first-child').innerText = isDarkMode ? '🌙' : '☀️';
-
-        snowBtn.querySelector('.btn-text').innerText = isSnowing ? d.lbl.snowOn : d.lbl.snowOff;
-        snowBtn.querySelector('span:first-child').innerText = isSnowing ? '❄️' : '🌫️';
+        const tb = document.getElementById('theme-toggle-btn');
+        const sb = document.getElementById('snow-toggle-btn');
+        tb.querySelector('.btn-text').innerText = isDarkMode ? d.lbl.themeDark : d.lbl.themeLight;
+        tb.querySelector('span:first-child').innerText = isDarkMode ? '🌙' : '☀️';
+        sb.querySelector('.btn-text').innerText = isSnowing ? d.lbl.snowOn : d.lbl.snowOff;
+        sb.querySelector('span:first-child').innerText = isSnowing ? '❄️' : '🌫️';
     }
 
-    function selectMobileTool(val) {
-        activeTool = val;
-        quizStep = 0;
-        quizData = {};
-        refreshSidebar();
-        renderActiveTool();
-    }
+    function selectMobileTool(v) { activeTool = v; quizStep = 0; quizData = {}; refreshSidebar(); renderActiveTool(); }
 
-    function refreshSidebar(filter = "") {
+    function refreshSidebar(f = "") {
         const d = translations[activeLang] || translations['en'];
         const list = document.getElementById('nav-list');
-        const mobileNav = document.getElementById('mobile-nav');
-        
-        list.innerHTML = "";
-        mobileNav.innerHTML = "";
-
-        toolDefinitions.forEach((tool, i) => {
+        const mNav = document.getElementById('mobile-nav');
+        list.innerHTML = ""; mNav.innerHTML = "";
+        toolDefinitions.forEach((t, i) => {
             const name = d.nav[i];
-            if (name.toLowerCase().includes(filter.toLowerCase())) {
+            if (name.toLowerCase().includes(f.toLowerCase())) {
                 const li = document.createElement('li');
-                li.className = `nav-item ${tool.id === activeTool ? 'active' : ''}`;
-                li.innerHTML = `<span>${tool.emoji}</span> ${name}`;
-                li.onclick = () => { activeTool = tool.id; quizStep = 0; quizData = {}; refreshSidebar(filter); renderActiveTool(); };
+                li.className = `nav-item ${t.id === activeTool ? 'active' : ''}`;
+                li.innerHTML = `<span>${t.emoji}</span> ${name}`;
+                li.onclick = () => { activeTool = t.id; quizStep = 0; quizData = {}; refreshSidebar(f); renderActiveTool(); };
                 list.appendChild(li);
             }
             const opt = document.createElement('option');
-            opt.value = tool.id;
-            opt.innerText = `${tool.emoji} ${name}`;
-            opt.selected = tool.id === activeTool;
-            mobileNav.appendChild(opt);
+            opt.value = t.id; opt.innerText = `${t.emoji} ${name}`; opt.selected = t.id === activeTool; mNav.appendChild(opt);
         });
     }
 
     function renderActiveTool() {
-        if (activeTool === 'lifestyle') {
-            renderLifestyleQuiz();
-            return;
-        }
-
-        const toolIdx = toolDefinitions.findIndex(t => t.id === activeTool);
-        const tool = toolDefinitions[toolIdx];
+        if (activeTool === 'lifestyle') { renderLifestyleQuiz(); return; }
+        const tIdx = toolDefinitions.findIndex(t => t.id === activeTool);
+        const t = toolDefinitions[tIdx];
         const d = translations[activeLang] || translations['en'];
         const view = document.getElementById('tool-view');
-        
         let inputsHtml = "";
-        for (let i = 0; i < tool.inputs.length; i++) {
-            const key = tool.inputs[i];
+        for (let i = 0; i < t.inputs.length; i++) {
+            const key = t.inputs[i];
             if (i % 2 === 0) inputsHtml += '<div class="input-row">';
             inputsHtml += `<div class="input-group"><label>${d.lbl[key]}</label><input type="text" id="in-${key}" value="${formatNumber(getDefaultValue(key))}" oninput="handleInput(event)"></div>`;
-            if (i % 2 === 1 || i === tool.inputs.length - 1) inputsHtml += '</div>';
+            if (i % 2 === 1 || i === t.inputs.length - 1) inputsHtml += '</div>';
         }
-
-        view.innerHTML = `
-            <div class="tool-card active">
-                <h2>${tool.emoji} ${d.h[toolIdx]}</h2>
-                <p class="tool-desc">${d.d[toolIdx]}</p>
-                ${inputsHtml}
-                <button class="calc-btn" onclick="runCalculation()">${d.lbl.btn}</button>
-                <div class="result-container" id="res-box"></div>
-            </div>
-        `;
+        view.innerHTML = `<div class="tool-card active"><h2>${t.emoji} ${d.h[tIdx]}</h2><p class="tool-desc">${d.d[tIdx]}</p>${inputsHtml}<button class="calc-btn" onclick="runCalculation()">${d.lbl.btn}</button><div class="result-container" id="res-box"></div></div>`;
     }
 
     function renderLifestyleQuiz() {
         const d = translations[activeLang] || translations['en'];
         const view = document.getElementById('tool-view');
-        const tool = toolDefinitions[0];
-        const steps = tool.inputs;
-        const currentKey = steps[quizStep];
-        const progress = ((quizStep + 1) / steps.length) * 100;
-
-        let inputElement = "";
-        if (["smoke", "drink", "consume_pork"].includes(currentKey)) {
-            inputElement = `<select id="in-quiz-${currentKey}"><option value="yes" ${quizData[currentKey] === 'yes' ? 'selected' : ''}>${d.lbl.opt_yes}</option><option value="no" ${quizData[currentKey] === 'no' ? 'selected' : ''}>${d.lbl.opt_no}</option></select>`;
-        } else if (currentKey === 'diet') {
-            inputElement = `<select id="in-quiz-${currentKey}">
-                <option value="normal" ${quizData[currentKey] === 'normal' ? 'selected' : ''}>${d.lbl.opt_normal}</option>
-                <option value="vegan" ${quizData[currentKey] === 'vegan' ? 'selected' : ''}>${d.lbl.opt_vegan}</option>
-                <option value="veg" ${quizData[currentKey] === 'veg' ? 'selected' : ''}>${d.lbl.opt_veg}</option>
-            </select>`;
+        const steps = toolDefinitions[0].inputs;
+        const key = steps[quizStep];
+        const prog = ((quizStep + 1) / steps.length) * 100;
+        let inputEl = "";
+        if (["smoke", "drink", "consume_pork"].includes(key)) {
+            inputEl = `<select id="in-quiz-${key}"><option value="yes" ${quizData[key] === 'yes' ? 'selected' : ''}>${d.lbl.opt_yes}</option><option value="no" ${quizData[key] === 'no' ? 'selected' : ''}>${d.lbl.opt_no}</option></select>`;
+        } else if (key === 'diet') {
+            inputEl = `<select id="in-quiz-${key}"><option value="normal" ${quizData[key] === 'normal' ? 'selected' : ''}>${d.lbl.opt_normal}</option><option value="vegan" ${quizData[key] === 'vegan' ? 'selected' : ''}>${d.lbl.opt_vegan}</option><option value="veg" ${quizData[key] === 'veg' ? 'selected' : ''}>${d.lbl.opt_veg}</option></select>`;
         } else {
-            inputElement = `<input type="number" id="in-quiz-${currentKey}" value="${quizData[currentKey] || getDefaultValue(currentKey)}">`;
+            inputEl = `<input type="number" id="in-quiz-${key}" value="${quizData[key] || getDefaultValue(key)}">`;
         }
-
-        view.innerHTML = `
-            <div class="tool-card active">
-                <div class="progress-container"><div class="progress-bar" style="width: ${progress}%"></div></div>
-                <h2>${tool.emoji} ${d.h[0]}</h2>
-                <p class="tool-desc">${d.d[0]}</p>
-                <div style="margin-bottom: 30px;">
-                    <label>${d.lbl[currentKey]}</label>
-                    ${inputElement}
-                </div>
-                <div class="btn-group">
-                    ${quizStep > 0 ? `<button class="nav-btn secondary" onclick="prevQuizStep()">${d.lbl.back}</button>` : ''}
-                    <button class="nav-btn" onclick="nextQuizStep()">${quizStep === steps.length - 1 ? d.lbl.btn : d.lbl.next}</button>
-                </div>
-                <div class="result-container" id="res-box"></div>
-            </div>
-        `;
+        view.innerHTML = `<div class="tool-card active"><div class="progress-container"><div class="progress-bar" style="width: ${prog}%"></div></div><h2>🧪 ${d.h[0]}</h2><p class="tool-desc">${d.d[0]}</p><div style="margin-bottom: 30px;"><label>${d.lbl[key]}</label>${inputEl}</div><div class="btn-group">${quizStep > 0 ? `<button class="nav-btn secondary" onclick="prevQuizStep()">${d.lbl.back}</button>` : ''}<button class="nav-btn" onclick="nextQuizStep()">${quizStep === steps.length - 1 ? d.lbl.btn : d.lbl.next}</button></div><div class="result-container" id="res-box"></div></div>`;
     }
 
     function nextQuizStep() {
-        const tool = toolDefinitions[0];
-        const steps = tool.inputs;
-        const currentKey = steps[quizStep];
-        const val = document.getElementById(`in-quiz-${currentKey}`).value;
-        quizData[currentKey] = val;
-
-        if (currentKey === 'smoke' && val === 'no') { quizStep = 4; } 
-        else if (currentKey === 'drink' && val === 'no') { quizStep = 7; } 
+        const steps = toolDefinitions[0].inputs;
+        const key = steps[quizStep];
+        const val = document.getElementById(`in-quiz-${key}`).value;
+        quizData[key] = val;
+        if (key === 'smoke' && val === 'no') { quizStep = 4; } 
+        else if (key === 'drink' && val === 'no') { quizStep = 7; } 
         else { quizStep++; }
-
         if (quizStep >= steps.length) { quizStep = steps.length - 1; runCalculation(); } 
         else { renderActiveTool(); }
     }
@@ -590,121 +383,130 @@
     }
 
     function handleInput(e) {
-        let val = e.target.value.replace(/\D/g, "");
-        if (val === "") { e.target.value = ""; return; }
-        e.target.value = new Intl.NumberFormat('de-DE').format(parseInt(val));
+        let v = e.target.value.replace(/\D/g, "");
+        if (v === "") { e.target.value = ""; return; }
+        e.target.value = new Intl.NumberFormat('de-DE').format(parseInt(v));
     }
 
-    function getDefaultValue(key) {
-        const defaults = { age: 25, packs: 1, smoke_start: 18, alcohol_freq: 5, drink_start: 18, start: 14, hours: 4, daily: 2, size: 100, price: 150, sprays: 5, freq: 7, pages: 300, pph: 6, min: 20, shours: 6, pday: 25, monthly: 4, salary: 45000, chours: 1, cyears: 15, shours_day: 8, syears: 10 };
-        return defaults[key] || 0;
+    function getDefaultValue(k) {
+        const d = { age: 25, packs: 1, smoke_start: 18, alcohol_freq: 5, drink_start: 18, start: 14, hours: 4, daily: 2, size: 100, price: 150, sprays: 5, freq: 7, pages: 300, pph: 6, min: 20, shours: 6, pday: 25, monthly: 4, salary: 45000, chours: 1, cyears: 15, shours_day: 8, syears: 10 };
+        return d[k] || 0;
     }
 
     function runCalculation() {
         const d = translations[activeLang] || translations['en'];
+        const vals = {};
 
         if (activeTool === 'lifestyle') {
             const age = parseFloat(quizData.age) || 1;
             const res = [];
             if (quizData.smoke === 'yes') {
-                const sYears = Math.max(0, age - parseFloat(quizData.smoke_start));
-                const packs = parseFloat(quizData.packs);
-                const totalCigs = Math.round(sYears * 365.25 * packs * 20);
-                const totalMoney = Math.round(sYears * 365.25 * packs * 5.45);
-                res.push({ icon: "🚬", label: d.life_res[0], value: activeLang === 'sr' ? `Popušeno <span class="highlight">${formatNumber(totalCigs)}</span> cigareta. Potrošeno <span class="highlight">${formatNumber(totalMoney)} €</span>.` : `Smoked <span class="highlight">${formatNumber(totalCigs)}</span> cigarettes. Spent <span class="highlight">${formatNumber(totalMoney)} €</span>.` });
+                const sY = Math.max(0, age - parseFloat(quizData.smoke_start));
+                const p = parseFloat(quizData.packs);
+                const tC = Math.round(sY * 365.25 * p * 20);
+                const tM = Math.round(sY * 365.25 * p * 5.45);
+                res.push({ icon: "🚬", label: d.life_res[0], value: activeLang === 'sr' ? `Popušeno <span class="highlight">${formatNumber(tC)}</span> cigareta. Potrošeno <span class="highlight">${formatNumber(tM)} €</span>. To je <span class="highlight">${formatNumber(tC/20)}</span> pakli.` : `Smoked <span class="highlight">${formatNumber(tC)}</span> cigarettes. Spent <span class="highlight">${formatNumber(tM)} €</span>. That's <span class="highlight">${formatNumber(tC/20)}</span> packs.` });
             }
             if (quizData.drink === 'yes') {
-                const dYears = Math.max(0, age - parseFloat(quizData.drink_start));
-                const totalDrinks = Math.round(dYears * 52.17 * parseFloat(quizData.alcohol_freq));
-                const totalLiters = Math.round(totalDrinks * 0.45 * 10) / 10; 
-                res.push({ icon: "🍺", label: d.life_res[1], value: activeLang === 'sr' ? `Konzumirano <span class="highlight">${formatNumber(totalLiters)} litara</span> alkohola.` : `Consumed <span class="highlight">${formatNumber(totalLiters)} liters</span> of alcohol.` });
+                const dY = Math.max(0, age - parseFloat(quizData.drink_start));
+                const tD = Math.round(dY * 52.17 * parseFloat(quizData.alcohol_freq));
+                const tL = Math.round(tD * 0.45 * 10) / 10; 
+                res.push({ icon: "🍺", label: d.life_res[1], value: activeLang === 'sr' ? `Konzumirano <span class="highlight">${formatNumber(tL)} litara</span> alkohola kroz <span class="highlight">${formatNumber(tD)}</span> pića.` : `Consumed <span class="highlight">${formatNumber(tL)} liters</span> of alcohol across <span class="highlight">${formatNumber(tD)}</span> drinks.` });
             }
-            let dietDesc = "";
             const totalMeat = Math.round(age * 365.25 * 0.228);
-            if (quizData.diet === 'vegan') dietDesc = activeLang === 'sr' ? `Spasio si <span class="highlight">${formatNumber(age * 365)}</span> životinja.` : `Saved <span class="highlight">${formatNumber(age * 365)}</span> animals.`;
-            else if (quizData.diet === 'veg') dietDesc = activeLang === 'sr' ? `Poštedeo si <span class="highlight">${formatNumber(age * 182)}</span> životinja.` : `Spared <span class="highlight">${formatNumber(age * 182)}</span> animals.`;
-            else dietDesc = activeLang === 'sr' ? `Pojeo si <span class="highlight">${formatNumber(totalMeat)} kg</span> mesa.` : `Ate <span class="highlight">${formatNumber(totalMeat)} kg</span> of meat.`;
-            if (quizData.consume_pork === 'no') dietDesc += activeLang === 'sr' ? ` Izbegao si <span class="highlight">~${formatNumber(age * 44.5)} kg</span> svinjetine.` : ` Avoided <span class="highlight">~${formatNumber(age * 44.5)} kg</span> of pork.`;
-            res.push({ icon: "🍽️", label: d.life_res[2], value: dietDesc });
+            let dietD = (quizData.diet === 'vegan') ? (activeLang === 'sr' ? `Spasio si <span class="highlight">${formatNumber(age * 365)}</span> životinja.` : `Saved <span class="highlight">${formatNumber(age * 365)}</span> animals.`) : 
+                       (quizData.diet === 'veg') ? (activeLang === 'sr' ? `Poštedeo si <span class="highlight">${formatNumber(age * 182)}</span> životinja.` : `Spared <span class="highlight">${formatNumber(age * 182)}</span> animals.`) :
+                       (activeLang === 'sr' ? `Pojeo si <span class="highlight">${formatNumber(totalMeat)} kg</span> mesa.` : `Ate <span class="highlight">${formatNumber(totalMeat)} kg</span> of meat.`);
+            if (quizData.consume_pork === 'no') dietD += activeLang === 'sr' ? ` Izbegao si <span class="highlight">~${formatNumber(age * 44.5)} kg</span> svinjetine.` : ` Avoided <span class="highlight">~${formatNumber(age * 44.5)} kg</span> of pork.`;
+            res.push({ icon: "🍽️", label: d.life_res[2], value: dietD });
             renderHumanResults(res);
             return;
         }
 
-        const tool = toolDefinitions.find(t => t.id === activeTool);
-        const vals = {};
-        tool.inputs.forEach(id => { vals[id] = parseFloat(document.getElementById(`in-${id}`).value.replace(/\./g, "")) || 0; });
+        const t = toolDefinitions.find(t => t.id === activeTool);
+        t.inputs.forEach(id => { 
+            const el = document.getElementById(`in-${id}`);
+            if(el) vals[id] = parseFloat(el.value.replace(/\./g, "")) || 0; 
+        });
 
         if (activeTool === 'human') {
-            const age = vals.age || 1;
-            renderHumanResults([{ icon: "❤️", label: d.facts[0], value: formatNumber(age * 365.25 * 24 * 60 * 72), unit: d.units[0] }, { icon: "🌬️", label: d.facts[1], value: formatNumber(age * 365.25 * 24 * 60 * 14), unit: d.units[1] }, { icon: "🐍", label: d.facts[5], value: (age * 0.85).toFixed(1), unit: d.units[5] }]);
+            const a = vals.age || 1;
+            renderHumanResults([
+                { icon: "❤️", label: d.facts[0], value: formatNumber(a * 365.25 * 24 * 60 * 72), unit: d.units[0] },
+                { icon: "🌬️", label: d.facts[1], value: formatNumber(a * 365.25 * 24 * 60 * 14), unit: d.units[1] },
+                { icon: "💇", label: d.facts[2], value: (a * 365.25 * 0.35 * 100000 / 1000000).toFixed(1), unit: d.units[2] },
+                { icon: "💩", label: d.facts[3], value: formatNumber(a * 365.25 * 0.128), unit: d.units[3] },
+                { icon: "🧪", label: d.facts[4], value: formatNumber(a * 365.25 * 1.5), unit: d.units[4] },
+                { icon: "🐍", label: d.facts[5], value: (a * 0.85).toFixed(1), unit: d.units[5] }
+            ]);
         } else if (activeTool === 'oxygen') {
-            const age = vals.age || 1;
-            const co2 = age * 365.25 * 1.05;
-            renderHumanResults([{ icon: "🫁", label: d.ofacts[0], value: formatNumber(age * 365.25 * 550), unit: d.ounits[0] }, { icon: "🏭", label: d.ofacts[1], value: formatNumber(co2), unit: d.ounits[1] }, { icon: "🌳", label: d.ofacts[2], value: formatNumber(Math.ceil(co2 / 21)), unit: d.ounits[2] }]);
+            const a = vals.age || 1; const co2 = a * 365.25 * 1.05;
+            renderHumanResults([{ icon: "🫁", label: d.ofacts[0], value: formatNumber(a * 365.25 * 550), unit: d.ounits[0] }, { icon: "🏭", label: d.ofacts[1], value: formatNumber(co2), unit: d.ounits[1] }, { icon: "🌳", label: d.ofacts[2], value: formatNumber(Math.ceil(co2 / 21)), unit: d.ounits[2] }]);
         } else {
-            renderResultsArea(activeTool, activeTool, ["Processing...", "Results generated."]);
+            const y = Math.max(0, vals.age - (vals.start || 0));
+            const totalP = vals.pday * 365.25 * (vals.age || 1);
+            const msgs = {
+                en: {
+                    scroll: [`You scrolled <span class="highlight">${formatNumber(vals.hours * 0.18 * 365.25 * y)} km</span>. That's <span class="highlight">${((vals.hours * 0.18 * 365.25 * y) / 8.848).toFixed(1)} Everests</span>!`, `0.18km/h speed across ${y} years.`],
+                    coffee: [`You drank <span class="highlight">${formatNumber(Math.floor(vals.daily * 0.18 * 365.25 * y))} liters</span>. That's <span class="highlight">${(Math.floor(vals.daily * 0.18 * 365.25 * y) / 150).toFixed(1)} bathtubs</span>!`, `180ml cup across ${y} years.`],
+                    perfume: [`1 spray costs <span class="highlight">${(vals.price / (vals.size * 10 || 1)).toFixed(2)} €</span>. Bottle lasts <span class="highlight">${formatNumber(Math.floor((vals.size * 10) / (vals.sprays * (vals.freq/7) || 1)))} days</span>.`, `Based on 10 sprays per 1ml.`],
+                    bezos: [`Bezos earns your salary in <span class="highlight">${(vals.salary / 2200).toFixed(2)} seconds</span>.`, `Estimated ~2.200 € earning per second.`],
+                    pizza: [`You eat <span class="highlight">${(vals.monthly * 12 * 0.07).toFixed(2)} m²</span> of pizza per year.`, `Average pizza is 0.07m².`],
+                    books: [`You read <span class="highlight">${formatNumber(totalP)}</span> pages. That's approx. <span class="highlight">${formatNumber(totalP / 300)}</span> books.`, `Based on ~300 pages per book.`],
+                    sleep: [`You lose <span class="highlight">${((8 - vals.shours) * 365.25 / 24).toFixed(1)} days</span> of recovery per year.`, `Against 8h optimal sleep daily.`],
+                    exam: [`You need <span class="highlight">${((vals.pages / (vals.pph || 1)) / (vals.hours || 1)).toFixed(1)} days</span>. Total: <span class="highlight">${(vals.pages / (vals.pph || 1)).toFixed(1)} hours</span>.`, `${formatNumber(vals.pages)} pages at ${vals.pph} str/h.`],
+                    toilet: [`In life (80y), you'll spend <span class="highlight">${formatNumber(Math.floor((vals.min * vals.daily * 365.25 * 80) / 1440))} days</span> on the throne.`, `Based on your habits.`],
+                    words: [`Spoken equivalent to <span class="highlight">${formatNumber(Math.floor((vals.age * 365.25 * 7000) / 50000))}</span> thick books.`, `Avg 7.000 words per day.`],
+                    sitting: [`Spent <span class="highlight">${(vals.shours_day * 365.25 * vals.syears / 8760).toFixed(1)} years</span> sitting.`, `Converted to full years.`],
+                    waiting: [`Spent <span class="highlight">${formatNumber(Math.floor(vals.age * 3.5))} days</span> in lines.`, `Est. 3.5 days/year waiting.`],
+                    commute: [`Spent <span class="highlight">${formatNumber(Math.floor((vals.chours * 250 * vals.cyears) / 24))} days</span> in traffic.`, `Based on 250 work days/year.`]
+                },
+                sr: {
+                    scroll: [`Skrolovao si <span class="highlight">${formatNumber(vals.hours * 0.18 * 365.25 * y)} km</span>. To je visina <span class="highlight">${((vals.hours * 0.18 * 365.25 * y) / 8.848).toFixed(1)} Mont Everesta</span>!`, `Brzina 0.18km/h tokom ${y} godina.`],
+                    coffee: [`Popio si <span class="highlight">${formatNumber(Math.floor(vals.daily * 0.18 * 365.25 * y))} litara</span>. To puni <span class="highlight">${(Math.floor(vals.daily * 0.18 * 365.25 * y) / 150).toFixed(1)} kadi</span>!`, `180ml po šolji tokom ${y} god.`],
+                    perfume: [`Jedno prskanje košta <span class="highlight">${(vals.price / (vals.size * 10 || 1)).toFixed(2)} €</span>. Bočica traje <span class="highlight">${formatNumber(Math.floor((vals.size * 10) / (vals.sprays * (vals.freq/7) || 1)))} dana</span>.`, `Na bazi 10 prskanja po 1ml.`],
+                    bezos: [`Bezos zaradi tvoju platu za <span class="highlight">${(vals.salary / 2200).toFixed(2)} sekundi</span>.`, `Procenjeno ~2.200 € u sekundi.`],
+                    pizza: [`Godišnje pojedeš <span class="highlight">${(vals.monthly * 12 * 0.07).toFixed(2)} m²</span> pice.`, `Prosečna pica je 0.07m².`],
+                    books: [`Pročitao si <span class="highlight">${formatNumber(totalP)}</span> stranica. To je oko <span class="highlight">${formatNumber(totalP / 300)}</span> knjiga.`, `Na bazi ~300 strana po knjizi.`],
+                    sleep: [`Gubiš <span class="highlight">${((8 - vals.shours) * 365.25 / 24).toFixed(1)} dana</span> odmora godišnje.`, `U odnosu na idealnih 8h sna.`],
+                    exam: [`Treba ti <span class="highlight">${((vals.pages / (vals.pph || 1)) / (vals.hours || 1)).toFixed(1)} dana</span>. Ukupno: <span class="highlight">${(vals.pages / (vals.pph || 1)).toFixed(1)} sati</span>.`, `${formatNumber(vals.pages)} strana pri ${vals.pph} str/h.`],
+                    toilet: [`Za život (80g) provešćeš <span class="highlight">${formatNumber(Math.floor((vals.min * vals.daily * 365.25 * 80) / 1440))} dana</span> na šolji.`, `Bazirano na tvojim navikama.`],
+                    words: [`Izgovorio si reči za <span class="highlight">${formatNumber(Math.floor((vals.age * 365.25 * 7000) / 50000))}</span> knjiga.`, `Prosek od 7.000 reči dnevno.`],
+                    sitting: [`Proveo si <span class="highlight">${(vals.shours_day * 365.25 * vals.syears / 8760).toFixed(1)} godina</span> sedeći.`, `Pretvoreno u pune godine.`],
+                    waiting: [`Čekao si u redovima ukupno <span class="highlight">${formatNumber(Math.floor(vals.age * 3.5))} dana</span>.`, `Procena 3.5 dana godišnje.`],
+                    commute: [`Proveo si <span class="highlight">${formatNumber(Math.floor((vals.chours * 250 * vals.cyears) / 24))} dana</span> u putu.`, `Na bazi 250 radnih dana godišnje.`]
+                }
+            };
+            const cM = msgs[activeLang] || msgs['en'];
+            renderResultsArea(activeTool, activeTool, cM[activeTool] || ["Processed.", "Check stats."]);
         }
     }
 
-    function renderHumanResults(data) {
-        const container = document.getElementById(`res-box`);
-        container.innerHTML = "";
-        data.forEach(item => {
-            const div = document.createElement('div');
-            div.className = "res-block";
-            div.style.display = "flex"; div.style.alignItems = "center"; div.style.gap = "15px";
-            div.innerHTML = `<span style="font-size: 1.5rem;">${item.icon}</span><div><span class="res-title">${item.label}</span><div class="res-value">${item.value} ${item.unit || ''}</div></div>`;
-            container.appendChild(div);
-        });
-        addAIBtn(container);
-        container.style.display = "block";
+    function renderHumanResults(d) {
+        const c = document.getElementById(`res-box`); c.innerHTML = "";
+        d.forEach(i => { const dv = document.createElement('div'); dv.className = "res-block"; dv.style.display = "flex"; dv.style.alignItems = "center"; dv.style.gap = "15px"; dv.innerHTML = `<span style="font-size: 1.5rem;">${i.icon}</span><div><span class="res-title">${i.label}</span><div class="res-value">${i.value} ${i.unit || ''}</div></div>`; c.appendChild(dv); });
+        addAIBtn(c); c.style.display = "block";
     }
 
-    function renderResultsArea(id, type, dataStrings) {
-        const container = document.getElementById(`res-box`);
-        const d = translations[activeLang] || translations['en'];
-        container.innerHTML = "";
-        dataStrings.forEach((text, i) => {
-            const div = document.createElement('div');
-            div.className = "res-block";
-            div.innerHTML = `<span class="res-title">${d.res_t[i] || "Result"}</span><div class="res-value">${text}</div>`;
-            container.appendChild(div);
-        });
-        addAIBtn(container);
-        container.style.display = "block";
+    function renderResultsArea(id, t, dS) {
+        const c = document.getElementById(`res-box`); const d = translations[activeLang] || translations['en']; c.innerHTML = "";
+        dS.forEach((tx, i) => { const dv = document.createElement('div'); dv.className = "res-block"; dv.innerHTML = `<span class="res-title">${d.res_t[i] || "Result"}</span><div class="res-value">${tx}</div>`; c.appendChild(dv); });
+        addAIBtn(c); c.style.display = "block";
     }
 
-    function addAIBtn(container) {
-        const d = translations[activeLang] || translations['en'];
-        const aiBtn = document.createElement('button');
-        aiBtn.className = "ai-btn";
-        aiBtn.innerHTML = `<span class="btn-label">${d.lbl.ai_btn}</span>`;
-        aiBtn.onclick = () => {
-            let aiBox = document.getElementById('ai-box');
-            if (!aiBox) {
-                aiBox = document.createElement('div');
-                aiBox.id = `ai-box`;
-                aiBox.className = "ai-block";
-                container.appendChild(aiBox);
-            }
-            aiBox.style.display = "block";
-            aiBox.innerHTML = `<span class="ai-title">${d.lbl.ai_title}</span><div class="res-value" id="ai-val">${d.lbl.soon}</div>`;
-        };
-        container.appendChild(aiBtn);
+    function addAIBtn(c) {
+        const d = translations[activeLang] || translations['en']; const b = document.createElement('button'); b.className = "ai-btn"; b.innerHTML = `<span class="btn-label">${d.lbl.ai_btn}</span>`;
+        b.onclick = () => { let bx = document.getElementById('ai-box'); if (!bx) { bx = document.createElement('div'); bx.id = `ai-box`; bx.className = "ai-block"; c.appendChild(bx); } bx.style.display = "block"; bx.innerHTML = `<span class="ai-title">${d.lbl.ai_title}</span><div class="res-value" id="ai-val">${d.lbl.soon}</div>`; };
+        c.appendChild(b);
     }
 
-    // Snow logic
-    const canvas = document.getElementById('snow-canvas');
-    const ctx = canvas.getContext('2d');
-    let snowflakes = [];
+    const canvas = document.getElementById('snow-canvas'); const ctx = canvas.getContext('2d'); let snowflakes = [];
     function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
     function createSnowflakes() { snowflakes = []; for (let i = 0; i < 150; i++) { snowflakes.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 4 + 1, speed: Math.random() * 1 + 0.5, wind: Math.random() * 0.5 - 0.25 }); } }
     function updateSnow() { if (!isSnowing) return; ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = isDarkMode ? "white" : "#cbd5e1"; ctx.beginPath(); snowflakes.forEach(f => { ctx.moveTo(f.x, f.y); ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2); f.y += f.speed; f.x += f.wind; if (f.y > canvas.height) f.y = -10; if (f.x > canvas.width) f.x = 0; if (f.x < 0) f.x = canvas.width; }); ctx.fill(); requestAnimationFrame(updateSnow); }
     function toggleSnow() { isSnowing = !isSnowing; canvas.style.display = isSnowing ? 'block' : 'none'; if (isSnowing) { resizeCanvas(); createSnowflakes(); updateSnow(); } updateActionButtons(); }
     window.addEventListener('resize', resizeCanvas);
-    refreshSidebar();
-    renderActiveTool();
-    updateActionButtons();
+    refreshSidebar(); renderActiveTool(); updateActionButtons();
 </script>
 </body>
 </html>

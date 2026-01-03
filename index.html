@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShockMetrics Pro | Human Metrics Hub</title>
+    <title>Shocking Math | Human Metrics Hub</title>
     <style>
         :root {
             --primary: #00ff88;
@@ -204,7 +204,7 @@
     <!-- Mobile Header -->
     <header class="mobile-header">
         <div class="mobile-top-bar">
-            <div class="logo" style="margin:0; font-size: 1.1rem;">SHOCK ⚡</div>
+            <div class="logo" style="margin:0; font-size: 1.1rem;">SHOCKING MATH ⚡</div>
             <div class="lang-bar" id="mobile-lang-bar">
                 <button class="lang-btn active" onclick="changeLang('en')">EN</button>
                 <button class="lang-btn" onclick="changeLang('sr')">SR</button>
@@ -217,7 +217,7 @@
 
     <!-- Desktop Sidebar -->
     <aside class="sidebar">
-        <div class="logo">SHOCKMETRICS ⚡</div>
+        <div class="logo">SHOCKING MATH ⚡</div>
         <input type="text" class="search-box" id="search" placeholder="Pretraži..." onkeyup="filterTools()">
         <ul class="nav-list" id="nav-list"></ul>
         <div class="lang-bar">
@@ -233,12 +233,15 @@
     </main>
 
 <script>
-    const apiKey = ""; 
+    
+    const apiKey = "gen-lang-client-0128325356"; 
+
     let activeLang = 'en';
     let activeTool = "human";
 
     const toolDefinitions = [
         { id: "human", emoji: "👤", inputs: ["age"] },
+        { id: "oxygen", emoji: "🌬️", inputs: ["age"] },
         { id: "scroll", emoji: "📱", inputs: ["age", "start", "hours"] },
         { id: "coffee", emoji: "☕", inputs: ["age", "start", "daily"] },
         { id: "perfume", emoji: "🧴", inputs: ["size", "price", "sprays", "freq"] },
@@ -256,9 +259,9 @@
 
     const translations = {
         en: {
-            nav: ["Human Body Stats", "Scroll Everest", "Coffee Ocean", "Perfume Value", "Exam Timer", "Toilet Warp", "Sleep Debt", "Book Worm", "Bezos vs You", "Pizza Surface", "Commute Life", "Words Library", "Sitting Life", "Waiting Line"],
-            h: ["Human Body Facts", "Scroll Distance", "Coffee Ocean", "Perfume Value", "Exam Prep", "Toilet Time", "Sleep Debt", "Book Worm", "The Bezos Gap", "Pizza Surface", "Traffic Trap", "Talking Library", "The Chair Trap", "Queue Specialist"],
-            d: ["Biological impact of your existence.", "Vertical distance you've scrolled.", "The literal ocean of caffeine consumed.", "True cost of smelling good.", "Study sessions based on volume.", "Life spent on the porcelain throne.", "Cost of staying awake vs rest.", "Knowledge volume in books.", "Billionaire vs your annual wage.", "Total surface of dough eaten.", "Time lost in traffic jams.", "Library of words you've spoken.", "Impact of a sedentary lifestyle.", "Time spent waiting in queues."],
+            nav: ["Human Body Stats", "Oxygen Factory", "Scroll Everest", "Coffee Ocean", "Perfume Value", "Exam Timer", "Toilet Warp", "Sleep Debt", "Book Worm", "Bezos vs You", "Pizza Surface", "Commute Life", "Words Library", "Sitting Life", "Waiting Line"],
+            h: ["Human Body Facts", "Oxygen Factory", "Scroll Distance", "Coffee Ocean", "Perfume Value", "Exam Prep", "Toilet Time", "Sleep Debt", "Book Worm", "The Bezos Gap", "Pizza Surface", "Traffic Trap", "Talking Library", "The Chair Trap", "Queue Specialist"],
+            d: ["Biological impact of your existence.", "Amount of oxygen you've consumed and CO2 produced.", "Vertical distance you've scrolled.", "The literal ocean of caffeine consumed.", "True cost of smelling good.", "Study sessions based on volume.", "Life spent on the porcelain throne.", "Cost of staying awake vs rest.", "Knowledge volume in books.", "Billionaire vs your annual wage.", "Total surface of dough eaten.", "Time lost in traffic jams.", "Library of words you've spoken.", "Impact of a sedentary lifestyle.", "Time spent waiting in queues."],
             lbl: {
                 age: "Age", start: "Started at", hours: "Hours/Day", daily: "Times/Day", size: "Size (ml)", price: "Price (€)",
                 sprays: "Sprays", freq: "Days/Week", pages: "Pages", pph: "Pages/h", min: "Min/Session",
@@ -269,12 +272,14 @@
             res_t: ["The Shock 😱", "The Math 📊"],
             ai_prompt: "Act as a sarcastic data analyst. Analyze my {type} stats: {result}. Short & funny in {lang}.",
             facts: ["Heartbeat", "Breaths", "Hair", "Feces", "Urine", "Skin"],
-            units: ["beats", "times", "km", "kg", "L", "kg"]
+            units: ["beats", "times", "km", "kg", "L", "kg"],
+            ofacts: ["Oxygen Consumed", "CO2 Produced", "Trees Required"],
+            ounits: ["liters", "kg", "trees"]
         },
         sr: {
-            nav: ["Ljudsko telo", "Scroll Everest", "Okean kafe", "Cena parfema", "Ispit tajmer", "WC vreme", "Dug spavanja", "Čitač knjiga", "Bezos i ti", "Površina pice", "Život u putu", "Biblioteka reči", "Život u stolici", "Red čekanja"],
-            h: ["Činjenice o telu", "Scroll kilometraža", "Okean kafe", "Vrednost parfema", "Spremanje ispita", "WC vremenska mašina", "Dug spavanja", "Čitač knjiga", "Bezosov ponor", "Površina pice", "Zemlja u gužvi", "Govorna biblioteka", "Zamka stolice", "Specijalista za redove"],
-            d: ["Izračunaj svoj biološki uticaj do sada.", "Koliko si visoko skrolovao vertikalno.", "Doslovni okean kofeina koji si popio.", "Prava cena tvog dobrog mirisa.", "Isplaniraj učenje na osnovu strana.", "Vreme provedeno na porcelanskom tronu.", "Cena nespavanja u odnosu na odmor.", "Zapremina znanja u knjigama.", "Koliko brzo Bezos zaradi tvoju platu.", "Ukupna površina testa koju si pojeo.", "Vreme izgubljeno u saobraćaju.", "Biblioteka reči koje si izgovorio.", "Fizički uticaj sedenja.", "Vreme provedeno u redovima."],
+            nav: ["Ljudsko telo", "Fabrika kiseonika", "Scroll Everest", "Okean kafe", "Cena parfema", "Ispit tajmer", "WC vreme", "Dug spavanja", "Čitač knjiga", "Bezos i ti", "Površina pice", "Život u putu", "Biblioteka reči", "Život u stolici", "Red čekanja"],
+            h: ["Činjenice o telu", "Fabrika kiseonika", "Scroll kilometraža", "Okean kafe", "Vrednost parfema", "Spremanje ispita", "WC vremenska mašina", "Dug spavanja", "Čitač knjiga", "Bezosov ponor", "Površina pice", "Zemlja u gužvi", "Govorna biblioteka", "Zamka stolice", "Specijalista za redove"],
+            d: ["Izračunaj svoj biološki uticaj do sada.", "Količina kiseonika koju si potrošio i CO2 koji si proizveo.", "Koliko si visoko skrolovao vertikalno.", "Doslovni okean kofeina koji si popio.", "Prava cena tvog dobrog mirisa.", "Isplaniraj učenje na osnovu strana.", "Vreme provedeno na porcelanskom tronu.", "Cena nespavanja u odnosu na odmor.", "Zapremina znanja u knjigama.", "Koliko brzo Bezos zaradi tvoju platu.", "Ukupna površina testa koju si pojeo.", "Vreme izgubljeno u saobraćaju.", "Biblioteka reči koje si izgovorio.", "Fizički uticaj sedenja.", "Vreme provedeno u redovima."],
             lbl: {
                 age: "Godine", start: "Počeo sa", hours: "Sati dnevno", daily: "Dnevno puta", size: "Veličina (ml)", price: "Cena (€)",
                 sprays: "Prskanja", freq: "Dana/Nedeljno", pages: "Ukupno strana", pph: "Strana/h", min: "Min/Sesiji",
@@ -285,7 +290,31 @@
             res_t: ["Šok podatak 😱", "Matematika 📊"],
             ai_prompt: "Ponašaj se kao sarkastičan analitičar. Analiziraj statistiku: {type}: {result}. Budi kratak i duhovit na srpskom jeziku.",
             facts: ["Otkucaji srca", "Udisaji", "Rast kose", "Izmet", "Urin", "Mrtva koža"],
-            units: ["otkucaja", "puta", "km", "kg", "L", "kg"]
+            units: ["otkucaja", "puta", "km", "kg", "L", "kg"],
+            ofacts: ["Potrošen kiseonik", "Proizveden CO2", "Potrebno drveća"],
+            ounits: ["litara", "kg", "stabala"]
+        },
+        de: {
+            nav: ["Körper Statistiken", "Sauerstofffabrik", "Scroll Everest", "Kaffee Ozean", "Parfüm Wert", "Prüfung Timer", "Toilette Warp", "Schlafschulden", "Bücherwurm", "Bezos vs Sie", "Pizza-Fläche", "Pendlerleben", "Sprachbibliothek", "Sitzfalle", "Schlangestehen"],
+            h: ["Körperfakten", "Sauerstofffabrik", "Scroll-Distanz", "Kaffee-Ozean", "Parfüm-Wert", "Prüfungsvorbereitung", "Toiletten-Warp", "Schlafschulden", "Bücherwurm", "Bezos-Lücke", "Pizza-Oberfläche", "Verkehrsfalle", "Sprechbibliothek", "Sitzfalle", "Schlangestehen"],
+            d: ["Biologische Auswirkungen Ihrer Existenz.", "Menge an verbrauchtem Sauerstoff und produziertem CO2.", "Vertikale Distanz, die Sie gescrollt haben.", "Literaler Ozean an konsumiertem Koffein.", "Wahre Kosten für guten Duft.", "Lernsitzungen basierend auf Volumen.", "Leben auf dem Porzellanthron.", "Kosten des Wachbleibens vs. Ruhe.", "Wissensvolumen in Büchern.", "Milliardär vs. Ihr Jahreslohn.", "Gesamtfläche an verzehrtem Teig.", "Zeitverlust im Stau.", "Bibliothek der gesprochenen Wörter.", "Auswirkungen eines sitzenden Lebensstils.", "Wartezeit in Warteschlangen."],
+            lbl: { age: "Alter", start: "Begonnen", hours: "Std/Tag", daily: "Täglich", size: "Größe (ml)", price: "Preis (€)", sprays: "Sprays", freq: "Tage/Woche", pages: "Seiten", pph: "Seiten/h", min: "Min/Sitzung", shours: "Schlafstd.", pday: "Seiten/Tag", monthly: "Pizza/Monat", salary: "Gehalt (€)", chours: "Std/Tag", cyears: "Jahre", shours_day: "Std/Tag", syears: "Jahre", btn: "Berechnen 🚀", ai_btn: "AI-Einblick ✨", ai_loading: "Analyse...", ai_title: "AI Analyse ✨" },
+            res_t: ["Schock-Faktor 😱", "Mathematik 📊"],
+            facts: ["Herzschlag", "Atemzüge", "Haarwuchs", "Fäkalien", "Urin", "Haut"],
+            units: ["Schläge", "Mal", "km", "kg", "L", "kg"],
+            ofacts: ["Verbrauchter Sauerstoff", "Produziertes CO2", "Benötigte Bäume"],
+            ounits: ["Liter", "kg", "Bäume"]
+        },
+        fr: {
+            nav: ["Stats Corps", "Usine Oxygène", "Scroll Everest", "Océan Café", "Valeur Parfum", "Exam Timer", "Toilette Warp", "Dette Sommeil", "Lecteur Livre", "Bezos vs Vous", "Surface Pizza", "Vie Trajets", "Bibliothèque Mots", "Vie Assise", "File d'attente"],
+            h: ["Faits Biologiques", "Usine à Oxygène", "Distance Scroll", "Océan de Café", "Valeur Parfum", "Préparation Exam", "Temps Toilette", "Dette Sommeil", "Lecteur de Livre", "Ecart Bezos", "Surface Pizza", "Piège Trafic", "Bibliothèque Parlée", "Piège Assis", "Spécialiste File"],
+            d: ["Impact biologique de votre existence.", "Quantité d'oxygène consommée et de CO2 produit.", "Distance verticale scrollée.", "Océan de caféine consommé.", "Coût réel pour sentir bon.", "Sessions d'étude par volume.", "Vie sur le trône de porcelaine.", "Coût de l'éveil vs repos.", "Volume de connaissances en livres.", "Milliardaire vs votre salaire annuel.", "Surface totale de pâte mangée.", "Temps perdu dans les bouchons.", "Bibliothèque de mots parlés.", "Impact de la sédentarité.", "Temps passé dans les files."],
+            lbl: { age: "Âge", start: "Commencé", hours: "Heures/jour", daily: "Par jour", size: "Taille (ml)", price: "Prix (€)", sprays: "Sprays", freq: "Jours/sem", pages: "Pages", pph: "Pages/h", min: "Min/session", shours: "Sommeil", pday: "Pages/jour", monthly: "Pizzas/mois", salary: "Salaire (€)", chours: "Heures/jour", cyears: "Années", shours_day: "Heures/jour", syears: "Années", btn: "Calculer 🚀", ai_btn: "Aperçu AI ✨", ai_loading: "Analyse...", ai_title: "Analyse AI ✨" },
+            res_t: ["Le Choc 😱", "Calcul 📊"],
+            facts: ["Battements", "Souffles", "Cheveux", "Excréments", "Urine", "Peau"],
+            units: ["battements", "fois", "km", "kg", "L", "kg"],
+            ofacts: ["Oxygène consommé", "CO2 produit", "Arbres requis"],
+            ounits: ["litres", "kg", "arbres"]
         }
     };
 
@@ -307,7 +336,6 @@
     function changeLang(l) {
         activeLang = l;
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        // Update all buttons (desktop and mobile)
         document.querySelectorAll('.lang-btn').forEach(b => {
             if (b.innerText.toLowerCase() === l) b.classList.add('active');
         });
@@ -331,7 +359,6 @@
 
         toolDefinitions.forEach((tool, i) => {
             const name = d.nav[i];
-            
             if (name.toLowerCase().includes(filter.toLowerCase())) {
                 const li = document.createElement('li');
                 li.className = `nav-item ${tool.id === activeTool ? 'active' : ''}`;
@@ -339,7 +366,6 @@
                 li.onclick = () => { activeTool = tool.id; refreshSidebar(filter); renderActiveTool(); };
                 list.appendChild(li);
             }
-
             const opt = document.createElement('option');
             opt.value = tool.id;
             opt.innerText = `${tool.emoji} ${name}`;
@@ -387,13 +413,13 @@
         tool.inputs.forEach(id => { vals[id] = getRawValue(`in-${id}`); });
 
         if (activeTool === 'human') {
-            const yearsAlive = vals.age || 1;
-            const heart = yearsAlive * 365.25 * 24 * 60 * 75;
-            const feces = yearsAlive * 365.25 * 0.128;
-            const urine = yearsAlive * 365.25 * 1.5;
-            const hair = yearsAlive * 365.25 * 0.35 * 100000 / 1000000;
-            const breaths = yearsAlive * 365.25 * 24 * 60 * 14;
-            const skin = yearsAlive * 0.8;
+            const age = vals.age || 1;
+            const heart = age * 365.25 * 24 * 60 * 75;
+            const feces = age * 365.25 * 0.128;
+            const urine = age * 365.25 * 1.5;
+            const hair = age * 365.25 * 0.35 * 100000 / 1000000;
+            const breaths = age * 365.25 * 24 * 60 * 14;
+            const skin = age * 0.8;
 
             const facts = [
                 { icon: "❤️", label: d.facts[0], value: formatNumber(heart), unit: d.units[0] },
@@ -407,78 +433,86 @@
             return;
         }
 
-        let shock = "", math = "";
-        const years = Math.max(0, vals.age - vals.start);
+        if (activeTool === 'oxygen') {
+            const age = vals.age || 1;
+            const o2 = age * 365.25 * 550; // Liters O2 per day avg
+            const co2 = age * 365.25 * 1.0; // kg CO2 per day avg
+            const trees = Math.ceil(co2 / 22); // One tree absorbs 22kg/year
 
-        switch(activeTool) {
-            case "scroll":
-                const kmScroll = (vals.hours * 0.18 * 365.25 * years).toFixed(1);
-                shock = activeLang === 'sr' ? `Skrolovao si <span class="highlight">${formatNumber(kmScroll)} km</span>. To je visina <span class="highlight">${(kmScroll / 8.848).toFixed(1)} Mont Everesta</span>!` : `You scrolled <span class="highlight">${formatNumber(kmScroll)} km</span>. That's <span class="highlight">${(kmScroll / 8.848).toFixed(1)} Mt. Everests</span>!`;
-                math = activeLang === 'sr' ? `Brzina 0.18km/h tokom ${years} godina korišćenja.` : `0.18km/h speed across ${years} years.`;
-                break;
-            case "coffee":
-                const lCoffee = Math.floor(vals.daily * 0.18 * 365.25 * years);
-                shock = activeLang === 'sr' ? `Popio si <span class="highlight">${formatNumber(lCoffee)} litara</span> kafe. To puni <span class="highlight">${(lCoffee / 150).toFixed(1)} kadi</span>!` : `You drank <span class="highlight">${formatNumber(lCoffee)} liters</span>. That fills <span class="highlight">${(lCoffee / 150).toFixed(1)} bathtubs</span>!`;
-                math = activeLang === 'sr' ? `Prosečna šolja od 180ml tokom ${years} godina.` : `Avg 180ml cup across ${years} years.`;
-                break;
-            case "perfume":
-                const sprTotalPerf = vals.size * 10;
-                const c1Perf = (vals.price / (sprTotalPerf || 1)).toFixed(2);
-                const daysPerf = Math.floor(sprTotalPerf / (vals.sprays * (vals.freq/7) || 1));
-                shock = activeLang === 'sr' ? `Jedno prskanje košta <span class="highlight">${c1Perf} €</span>. Bočica traje oko <span class="highlight">${formatNumber(daysPerf)} dana</span>.` : `1 spray costs <span class="highlight">${c1Perf} €</span>. Bottle lasts approx <span class="highlight">${formatNumber(daysPerf)} days</span>.`;
-                math = activeLang === 'sr' ? `Na bazi 10 prskanja po 1ml tečnosti.` : `Based on 10 sprays per 1ml.`;
-                break;
-            case "bezos":
-                const timeBezos = (vals.salary / 2200).toFixed(2);
-                shock = activeLang === 'sr' ? `Bezos zaradi tvoju platu za <span class="highlight">${timeBezos} sekundi</span>.` : `Bezos earns your salary in <span class="highlight">${timeBezos} seconds</span>.`;
-                math = activeLang === 'sr' ? `Procena zarade Bezosa od ~2.200 € u sekundi.` : `Estimated ~2.200 € earning per second.`;
-                break;
-            case "pizza":
-                const pAreaPizza = (vals.monthly * 12 * 0.07).toFixed(2);
-                shock = activeLang === 'sr' ? `Pojedeš <span class="highlight">${pAreaPizza} m²</span> pice godišnje.` : `You eat <span class="highlight">${pAreaPizza} m²</span> of pizza per year.`;
-                math = activeLang === 'sr' ? `Prosečna pica ima površinu od 0.07m².` : `Average pizza area of 0.07m².`;
-                break;
-            case "sleep":
-                const debtDaysSleep = ((8 - vals.shours) * 365.25 / 24).toFixed(1);
-                shock = activeLang === 'sr' ? `Gubiš <span class="highlight">${debtDaysSleep} dana</span> odmora godišnje.` : `You lose <span class="highlight">${debtDaysSleep} days</span> of recovery per year.`;
-                math = activeLang === 'sr' ? `Poređenje sa idealnih 8h sna dnevno.` : `Against 8h optimal sleep daily.`;
-                break;
-            case "exam":
-                const totalHExam = (vals.pages / (vals.pph || 1)).toFixed(1);
-                const dNeededExam = (totalHExam / (vals.hours || 1)).toFixed(1);
-                shock = activeLang === 'sr' ? `Treba ti <span class="highlight">${dNeededExam} dana</span>. Ukupno: <span class="highlight">${totalHExam} sati</span>.` : `You need <span class="highlight">${dNeededExam} days</span>. Total: <span class="highlight">${totalHExam} hours</span>.`;
-                math = activeLang === 'sr' ? `${formatNumber(vals.pages)} strana pri ${vals.pph} str/h.` : `${formatNumber(vals.pages)} pages at ${vals.pph} str/h.`;
-                break;
-            case "toilet":
-                const tDaysToilet = Math.floor((vals.min * vals.daily * 365.25 * 40) / 1440);
-                shock = activeLang === 'sr' ? `U 40 godina provešćeš <span class="highlight">${formatNumber(tDaysToilet)} dana</span> na šolji.` : `In 40 years, you'll spend <span class="highlight">${formatNumber(tDaysToilet)} days</span> on the throne.`;
-                math = activeLang === 'sr' ? `Bazirano na tvojim dnevnim navikama.` : `Based on your daily habits.`;
-                break;
-            case "words":
-                const wBooksWords = Math.floor((vals.age * 365.25 * 7000) / 50000);
-                shock = activeLang === 'sr' ? `Izgovorio si reči za <span class="highlight">${formatNumber(wBooksWords)}</span> debelih knjiga.` : `Spoken words equivalent to <span class="highlight">${formatNumber(wBooksWords)}</span> thick books.`;
-                math = activeLang === 'sr' ? `Prosek od 7.000 reči dnevno.` : `Avg 7.000 words per day.`;
-                break;
-            case "sitting":
-                const sYSitting = (vals.shours_day * 365.25 * vals.syears / 8760).toFixed(1);
-                shock = activeLang === 'sr' ? `Presedeo si <span class="highlight">${sYSitting} godina</span> svog života.` : `Spent <span class="highlight">${sYSitting} years</span> of your life sitting.`;
-                math = activeLang === 'sr' ? `Sati sedenja pretvoreni u pune godine.` : `Total hours converted to years.`;
-                break;
-            case "waiting":
-                const wdWaiting = Math.floor(vals.age * 3.5);
-                shock = activeLang === 'sr' ? `Čekao si u redovima ukupno <span class="highlight">${formatNumber(wdWaiting)} dana</span>.` : `Spent <span class="highlight">${formatNumber(wdWaiting)} days</span> waiting in lines.`;
-                math = activeLang === 'sr' ? `Procenjeno 3.5 dana godišnje provedenih u redovima.` : `Estimated 3.5 days per year in queues.`;
-                break;
-            case "commute":
-                const cdCommute = Math.floor((vals.chours * 250 * vals.cyears) / 24);
-                shock = activeLang === 'sr' ? `Proveo si <span class="highlight">${formatNumber(cdCommute)} dana</span> u prevozu.` : `Spent <span class="highlight">${formatNumber(cdCommute)} days</span> in traffic.`;
-                math = activeLang === 'sr' ? `Bazirano na 250 radnih dana godišnje.` : `Based on 250 working days per year.`;
-                break;
-            default:
-                shock = "Data processed."; math = "Math verified.";
+            const facts = [
+                { icon: "🫁", label: d.ofacts[0], value: formatNumber(o2), unit: d.ounits[0] },
+                { icon: "🏭", label: d.ofacts[1], value: formatNumber(co2), unit: d.ounits[1] },
+                { icon: "🌳", label: d.ofacts[2], value: formatNumber(trees), unit: d.ounits[2] }
+            ];
+            renderHumanResults(facts);
+            return;
         }
 
-        renderResultsArea(activeTool, activeTool, [shock, math]);
+        const years = Math.max(0, vals.age - (vals.start || 0));
+
+        // Multi-language results templates
+        const resMsg = {
+            en: {
+                scroll: [`You scrolled <span class="highlight">${formatNumber(vals.hours * 0.18 * 365.25 * years)} km</span>. That's <span class="highlight">${((vals.hours * 0.18 * 365.25 * years) / 8.848).toFixed(1)} Mt. Everests</span>!`, `0.18km/h speed across ${years} years.`],
+                coffee: [`You drank <span class="highlight">${formatNumber(Math.floor(vals.daily * 0.18 * 365.25 * years))} liters</span>. That's <span class="highlight">${(Math.floor(vals.daily * 0.18 * 365.25 * years) / 150).toFixed(1)} bathtubs</span>!`, `180ml cup across ${years} years.`],
+                perfume: [`1 spray costs <span class="highlight">${(vals.price / (vals.size * 10 || 1)).toFixed(2)} €</span>. Bottle lasts <span class="highlight">${formatNumber(Math.floor((vals.size * 10) / (vals.sprays * (vals.freq/7) || 1)))} days</span>.`, `Based on 10 sprays per 1ml.`],
+                bezos: [`Bezos earns your salary in <span class="highlight">${(vals.salary / 2200).toFixed(2)} seconds</span>.`, `Estimated ~2.200 € earning per second.`],
+                pizza: [`You eat <span class="highlight">${(vals.monthly * 12 * 0.07).toFixed(2)} m²</span> of pizza per year.`, `Average pizza is 0.07m².`],
+                sleep: [`You lose <span class="highlight">${((8 - vals.shours) * 365.25 / 24).toFixed(1)} days</span> of recovery per year.`, `Against 8h optimal sleep daily.`],
+                exam: [`You need <span class="highlight">${((vals.pages / (vals.pph || 1)) / (vals.hours || 1)).toFixed(1)} days</span>. Total: <span class="highlight">${(vals.pages / (vals.pph || 1)).toFixed(1)} hours</span>.`, `${formatNumber(vals.pages)} pages at ${vals.pph} str/h.`],
+                toilet: [`In 40 years, you'll spend <span class="highlight">${formatNumber(Math.floor((vals.min * vals.daily * 365.25 * 40) / 1440))} days</span> on the throne.`, `Based on your habits.`],
+                words: [`Spoken equivalent to <span class="highlight">${formatNumber(Math.floor((vals.age * 365.25 * 7000) / 50000))}</span> thick books.`, `Avg 7.000 words per day.`],
+                sitting: [`Spent <span class="highlight">${(vals.shours_day * 365.25 * vals.syears / 8760).toFixed(1)} years</span> sitting.`, `Converted to full years.`],
+                waiting: [`Spent <span class="highlight">${formatNumber(Math.floor(vals.age * 3.5))} days</span> in lines.`, `Est. 3.5 days/year waiting.`],
+                commute: [`Spent <span class="highlight">${formatNumber(Math.floor((vals.chours * 250 * vals.cyears) / 24))} days</span> in traffic.`, `Based on 250 work days/year.`]
+            },
+            sr: {
+                scroll: [`Skrolovao si <span class="highlight">${formatNumber(vals.hours * 0.18 * 365.25 * years)} km</span>. To je visina <span class="highlight">${((vals.hours * 0.18 * 365.25 * years) / 8.848).toFixed(1)} Mont Everesta</span>!`, `Brzina 0.18km/h tokom ${years} godina.`],
+                coffee: [`Popio si <span class="highlight">${formatNumber(Math.floor(vals.daily * 0.18 * 365.25 * years))} litara</span>. To puni <span class="highlight">${(Math.floor(vals.daily * 0.18 * 365.25 * years) / 150).toFixed(1)} kadi</span>!`, `180ml po šolji tokom ${years} god.`],
+                perfume: [`Jedno prskanje košta <span class="highlight">${(vals.price / (vals.size * 10 || 1)).toFixed(2)} €</span>. Bočica traje <span class="highlight">${formatNumber(Math.floor((vals.size * 10) / (vals.sprays * (vals.freq/7) || 1)))} dana</span>.`, `Na bazi 10 prskanja po 1ml.`],
+                bezos: [`Bezos zaradi tvoju platu za <span class="highlight">${(vals.salary / 2200).toFixed(2)} sekundi</span>.`, `Procenjeno ~2.200 € u sekundi.`],
+                pizza: [`Pojeo si <span class="highlight">${(vals.monthly * 12 * 0.07).toFixed(2)} m²</span> pice godišnje.`, `Prosečna pica je 0.07m².`],
+                sleep: [`Gubiš <span class="highlight">${((8 - vals.shours) * 365.25 / 24).toFixed(1)} dana</span> odmora godišnje.`, `U odnosu na idealnih 8h sna.`],
+                exam: [`Treba ti <span class="highlight">${((vals.pages / (vals.pph || 1)) / (vals.hours || 1)).toFixed(1)} dana</span>. Ukupno: <span class="highlight">${(vals.pages / (vals.pph || 1)).toFixed(1)} sati</span>.`, `${formatNumber(vals.pages)} strana pri ${vals.pph} str/h.`],
+                toilet: [`U 40 godina provešćeš <span class="highlight">${formatNumber(Math.floor((vals.min * vals.daily * 365.25 * 40) / 1440))} dana</span> na šolji.`, `Bazirano na tvojim navikama.`],
+                words: [`Izgovorio si reči za <span class="highlight">${formatNumber(Math.floor((vals.age * 365.25 * 7000) / 50000))}</span> knjiga.`, `Prosek od 7.000 reči dnevno.`],
+                sitting: [`Proveo si <span class="highlight">${(vals.shours_day * 365.25 * vals.syears / 8760).toFixed(1)} godina</span> sedeći.`, `Pretvoreno u pune godine.`],
+                waiting: [`Čekao si u redovima ukupno <span class="highlight">${formatNumber(Math.floor(vals.age * 3.5))} dana</span>.`, `Procena 3.5 dana godišnje.`],
+                commute: [`Proveo si <span class="highlight">${formatNumber(Math.floor((vals.chours * 250 * vals.cyears) / 24))} dana</span> u putu.`, `Na bazi 250 radnih dana godišnje.`]
+            },
+            de: {
+                scroll: [`Du hast <span class="highlight">${formatNumber(vals.hours * 0.18 * 365.25 * years)} km</span> gescrollt. Das sind <span class="highlight">${((vals.hours * 0.18 * 365.25 * years) / 8.848).toFixed(1)} Mt. Everests</span>!`, `Geschwindigkeit 0.18km/h über ${years} Jahre.`],
+                coffee: [`Du hast <span class="highlight">${formatNumber(Math.floor(vals.daily * 0.18 * 365.25 * years))} Liter</span> Kaffee getrunken. Das füllt <span class="highlight">${(Math.floor(vals.daily * 0.18 * 365.25 * years) / 150).toFixed(1)} Badewannen</span>!`, `Basierend auf 180ml/Tasse über ${years} Jahre.`],
+                perfume: [`Ein Sprühstoß kostet <span class="highlight">${(vals.price / (vals.size * 10 || 1)).toFixed(2)} €</span>. Die Flasche hält <span class="highlight">${formatNumber(Math.floor((vals.size * 10) / (vals.sprays * (vals.freq/7) || 1)))} Tage</span>.`, `Basierend auf 10 Sprays/ml.`],
+                bezos: [`Bezos verdient dein Jahresgehalt in <span class="highlight">${(vals.salary / 2200).toFixed(2)} Sekunden</span>.`, `Geschätzt ~2.200 € pro Sekunde.`],
+                pizza: [`Du isst <span class="highlight">${(vals.monthly * 12 * 0.07).toFixed(2)} m²</span> Pizza pro Jahr.`, `Durchschnittliche Pizzafläche: 0.07m².`],
+                sleep: [`Du verlierst <span class="highlight">${((8 - vals.shours) * 365.25 / 24).toFixed(1)} Tage</span> Regeneration pro Jahr.`, `Gegenüber 8 Stunden Schlaf pro Nacht.`],
+                exam: [`Du brauchst <span class="highlight">${((vals.pages / (vals.pph || 1)) / (vals.hours || 1)).toFixed(1)} Tage</span>. Gesamt: <span class="highlight">${(vals.pages / (vals.pph || 1)).toFixed(1)} Stunden</span>.`, `${formatNumber(vals.pages)} Seiten bei ${vals.pph} S/h.`],
+                toilet: [`In 40 Jahren verbringst du <span class="highlight">${formatNumber(Math.floor((vals.min * vals.daily * 365.25 * 40) / 1440))} Tage</span> im Bad.`, `Basierend auf deinen Gewohnheiten.`],
+                words: [`Gesprochene Wörter entsprechen <span class="highlight">${formatNumber(Math.floor((vals.age * 365.25 * 7000) / 50000))}</span> Büchern.`, `Durchschnittlich 7.000 Wörter pro Tag.`],
+                sitting: [`Du saßt insgesamt <span class="highlight">${(vals.shours_day * 365.25 * vals.syears / 8760).toFixed(1)} Jahre</span>.`, `In volle Kalenderjahre umgerechnet.`],
+                waiting: [`Du hast insgesamt <span class="highlight">${formatNumber(Math.floor(vals.age * 3.5))} Tage</span> in Warteschlangen gewartet.`, `Ø 3.5 Tage/Jahr Wartezeit.`],
+                commute: [`Du hast insgesamt <span class="highlight">${formatNumber(Math.floor((vals.chours * 250 * vals.cyears) / 24))} Tage</span> im Stau verbracht.`, `Basierend auf 250 Arbeitstagen pro Jahr.`]
+            },
+            fr: {
+                scroll: [`Vous avez scrollé <span class="highlight">${formatNumber(vals.hours * 0.18 * 365.25 * years)} km</span>. C'est l'équivalent de <span class="highlight">${((vals.hours * 0.18 * 365.25 * years) / 8.848).toFixed(1)} Mont Everests</span>!`, `Vitesse 0.18km/h sur ${years} ans.`],
+                coffee: [`Vous avez bu <span class="highlight">${formatNumber(Math.floor(vals.daily * 0.18 * 365.25 * years))} litres</span> de café. C'est <span class="highlight">${(Math.floor(vals.daily * 0.18 * 365.25 * years) / 150).toFixed(1)} baignoires</span>!`, `Tasse de 180ml sur ${years} ans.`],
+                perfume: [`Un spray coûte <span class="highlight">${(vals.price / (vals.size * 10 || 1)).toFixed(2)} €</span>. Le flacon dure <span class="highlight">${formatNumber(Math.floor((vals.size * 10) / (vals.sprays * (vals.freq/7) || 1)))} jours</span>.`, `Basé sur 10 sprays par ml.`],
+                bezos: [`Bezos gagne votre salaire annuel en <span class="highlight">${(vals.salary / 2200).toFixed(2)} secondes</span>.`, `Estimation ~2.200 € par seconde.`],
+                pizza: [`Vous mangez <span class="highlight">${(vals.monthly * 12 * 0.07).toFixed(2)} m²</span> de pizza par an.`, `Surface moyenne de pizza : 0.07m².`],
+                sleep: [`Vous perdez <span class="highlight">${((8 - vals.shours) * 365.25 / 24).toFixed(1)} jours</span> de repos par an.`, `Contre 8h de sommeil idéal par nuit.`],
+                exam: [`Besoin de <span class="highlight">${((vals.pages / (vals.pph || 1)) / (vals.hours || 1)).toFixed(1)} jours</span>. Total: <span class="highlight">${(vals.pages / (vals.pph || 1)).toFixed(1)} heures</span>.`, `${formatNumber(vals.pages)} pages à ${vals.pph} p/h.`],
+                toilet: [`En 40 ans, vous passerez <span class="highlight">${formatNumber(Math.floor((vals.min * vals.daily * 365.25 * 40) / 1440))} jours</span> aux toilettes.`, `Basé sur vos habitudes quotidiennes.`],
+                words: [`Mots parlés équivalents à <span class="highlight">${formatNumber(Math.floor((vals.age * 365.25 * 7000) / 50000))}</span> livres.`, `Ø 7.000 mots par jour.`],
+                sitting: [`Passé <span class="highlight">${(vals.shours_day * 365.25 * vals.syears / 8760).toFixed(1)} ans</span> assis.`, `Converti en années calendaires pleines.`],
+                waiting: [`Passé <span class="highlight">${formatNumber(Math.floor(vals.age * 3.5))} jours</span> à attendre dans les files.`, `Ø 3.5 jours/an d'attente.`],
+                commute: [`Passé <span class="highlight">${formatNumber(Math.floor((vals.chours * 250 * vals.cyears) / 24))} jours</span> dans le trafic.`, `Sur base 250 jours de travail par an.`]
+            }
+        };
+
+        const langData = resMsg[activeLang] || resMsg['en'];
+        const toolRes = langData[activeTool];
+        renderResultsArea(activeTool, activeTool, toolRes || ["Data processed.", "Math verified."]);
     }
 
     function renderHumanResults(data) {
@@ -491,7 +525,7 @@
             div.innerHTML = `<span style="font-size: 1.5rem;">${item.icon}</span><div><span class="res-title">${item.label}</span><div class="res-value"><span class="highlight">${item.value}</span> ${item.unit}</div></div>`;
             container.appendChild(div);
         });
-        addAIBtn(container, 'human facts', data[0].value);
+        addAIBtn(container, activeTool, data[0].value);
         container.style.display = "block";
     }
 
@@ -503,7 +537,7 @@
             if (!text) return;
             const div = document.createElement('div');
             div.className = "res-block";
-            div.innerHTML = `<span class="res-title">${d.res_t[i]}</span><div class="res-value">${text}</div>`;
+            div.innerHTML = `<span class="res-title">${d.res_t[i] || "Result"}</span><div class="res-value">${text}</div>`;
             container.appendChild(div);
         });
         addAIBtn(container, type, dataStrings[0]);

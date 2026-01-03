@@ -62,56 +62,73 @@
             background: var(--primary); color: #000; font-weight: 700;
         }
 
-        /* Mobile Top Navigation */
+        /* Mobile Header */
         .mobile-header {
             display: none;
             width: 100%;
             background: var(--card);
-            padding: 15px 20px;
+            padding: 10px 15px;
             border-bottom: 1px solid #2d334a;
             position: fixed;
             top: 0;
+            left: 0;
             z-index: 1000;
             box-sizing: border-box;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mobile-top-bar {
+            display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
         }
 
         .mobile-tool-select {
             background: var(--bg);
             color: var(--primary);
             border: 1px solid var(--primary);
-            padding: 8px;
-            border-radius: 8px;
-            font-size: 0.9rem;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 0.95rem;
             outline: none;
-            max-width: 60%;
+            width: 100%;
+            font-weight: 600;
         }
 
         /* Main Content */
         .main-content {
             flex-grow: 1; display: flex; flex-direction: column;
             align-items: center; justify-content: flex-start;
-            padding: 60px 20px; overflow-y: auto; position: relative;
+            padding: 40px 20px; overflow-y: auto; position: relative;
         }
 
         .lang-bar {
-            position: fixed; top: 20px; right: 20px;
-            display: flex; gap: 5px; z-index: 1100;
+            display: flex; gap: 5px;
+        }
+
+        /* Desktop position for lang-bar */
+        .sidebar .lang-bar {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid #2d334a;
         }
 
         .lang-btn {
             background: var(--card); border: 1px solid #2d334a; color: white;
             padding: 6px 10px; border-radius: 8px; cursor: pointer;
-            font-size: 0.75rem; font-weight: 600;
+            font-size: 0.75rem; font-weight: 600; flex: 1;
+            text-align: center;
         }
 
-        .lang-btn.active { border-color: var(--primary); color: var(--primary); }
+        .lang-btn.active { border-color: var(--primary); color: var(--primary); background: rgba(0, 255, 136, 0.1); }
 
         .tool-card {
             background: var(--card); padding: 30px; border-radius: 24px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.4); width: 100%;
-            max-width: 600px; margin-top: 40px; border: 1px solid #2d334a;
+            max-width: 600px; border: 1px solid #2d334a;
+            margin-bottom: 40px;
         }
 
         h2 { margin: 0 0 10px 0; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
@@ -176,35 +193,42 @@
         @media (max-width: 850px) {
             .sidebar { display: none; }
             .mobile-header { display: flex; }
-            .main-content { padding-top: 80px; padding-left: 15px; padding-right: 15px; }
-            .tool-card { padding: 25px; margin-top: 10px; }
-            .lang-bar { top: 18px; right: 10px; position: absolute;}
-            .mobile-header { position: sticky; top: 0; }
+            .main-content { padding-top: 120px; padding-left: 15px; padding-right: 15px; height: auto; overflow: visible; }
+            body { height: auto; overflow-y: auto; }
+            .tool-card { padding: 20px; margin-top: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Mobile Navigation -->
+    <!-- Mobile Header -->
     <header class="mobile-header">
-        <div class="logo" style="margin:0; font-size: 1.1rem;">SHOCK ⚡</div>
+        <div class="mobile-top-bar">
+            <div class="logo" style="margin:0; font-size: 1.1rem;">SHOCK ⚡</div>
+            <div class="lang-bar" id="mobile-lang-bar">
+                <button class="lang-btn active" onclick="changeLang('en')">EN</button>
+                <button class="lang-btn" onclick="changeLang('sr')">SR</button>
+                <button class="lang-btn" onclick="changeLang('de')">DE</button>
+                <button class="lang-btn" onclick="changeLang('fr')">FR</button>
+            </div>
+        </div>
         <select class="mobile-tool-select" id="mobile-nav" onchange="selectMobileTool(this.value)"></select>
     </header>
 
+    <!-- Desktop Sidebar -->
     <aside class="sidebar">
         <div class="logo">SHOCKMETRICS ⚡</div>
         <input type="text" class="search-box" id="search" placeholder="Pretraži..." onkeyup="filterTools()">
         <ul class="nav-list" id="nav-list"></ul>
-    </aside>
-
-    <main class="main-content">
         <div class="lang-bar">
             <button class="lang-btn active" onclick="changeLang('en')">EN</button>
             <button class="lang-btn" onclick="changeLang('sr')">SR</button>
             <button class="lang-btn" onclick="changeLang('de')">DE</button>
             <button class="lang-btn" onclick="changeLang('fr')">FR</button>
         </div>
+    </aside>
 
+    <main class="main-content">
         <div id="tool-view" style="width: 100%; display: flex; justify-content: center;"></div>
     </main>
 
@@ -283,8 +307,10 @@
     function changeLang(l) {
         activeLang = l;
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        const activeBtn = Array.from(document.querySelectorAll('.lang-btn')).find(b => b.innerText.toLowerCase() === l);
-        if (activeBtn) activeBtn.classList.add('active');
+        // Update all buttons (desktop and mobile)
+        document.querySelectorAll('.lang-btn').forEach(b => {
+            if (b.innerText.toLowerCase() === l) b.classList.add('active');
+        });
         refreshSidebar();
         renderActiveTool();
     }
@@ -361,12 +387,13 @@
         tool.inputs.forEach(id => { vals[id] = getRawValue(`in-${id}`); });
 
         if (activeTool === 'human') {
-            const heart = vals.age * 365.25 * 24 * 60 * 75;
-            const feces = vals.age * 365.25 * 0.128;
-            const urine = vals.age * 365.25 * 1.5;
-            const hair = vals.age * 365.25 * 0.35 * 100000 / 1000000;
-            const breaths = vals.age * 365.25 * 24 * 60 * 14;
-            const skin = vals.age * 0.8;
+            const yearsAlive = vals.age || 1;
+            const heart = yearsAlive * 365.25 * 24 * 60 * 75;
+            const feces = yearsAlive * 365.25 * 0.128;
+            const urine = yearsAlive * 365.25 * 1.5;
+            const hair = yearsAlive * 365.25 * 0.35 * 100000 / 1000000;
+            const breaths = yearsAlive * 365.25 * 24 * 60 * 14;
+            const skin = yearsAlive * 0.8;
 
             const facts = [
                 { icon: "❤️", label: d.facts[0], value: formatNumber(heart), unit: d.units[0] },
@@ -381,7 +408,7 @@
         }
 
         let shock = "", math = "";
-        const years = vals.age - vals.start;
+        const years = Math.max(0, vals.age - vals.start);
 
         switch(activeTool) {
             case "scroll":
@@ -396,9 +423,9 @@
                 break;
             case "perfume":
                 const sprTotalPerf = vals.size * 10;
-                const c1Perf = (vals.price / sprTotalPerf).toFixed(2);
-                const daysPerf = Math.floor(sprTotalPerf / (vals.sprays * (vals.freq/7)));
-                shock = activeLang === 'sr' ? `Jedno prskanje košta <span class="highlight">${c1Perf} €</span>. Bočica traje <span class="highlight">${daysPerf} dana</span>.` : `1 spray costs <span class="highlight">${c1Perf} €</span>. Bottle lasts <span class="highlight">${daysPerf} days</span>.`;
+                const c1Perf = (vals.price / (sprTotalPerf || 1)).toFixed(2);
+                const daysPerf = Math.floor(sprTotalPerf / (vals.sprays * (vals.freq/7) || 1));
+                shock = activeLang === 'sr' ? `Jedno prskanje košta <span class="highlight">${c1Perf} €</span>. Bočica traje oko <span class="highlight">${formatNumber(daysPerf)} dana</span>.` : `1 spray costs <span class="highlight">${c1Perf} €</span>. Bottle lasts approx <span class="highlight">${formatNumber(daysPerf)} days</span>.`;
                 math = activeLang === 'sr' ? `Na bazi 10 prskanja po 1ml tečnosti.` : `Based on 10 sprays per 1ml.`;
                 break;
             case "bezos":
@@ -408,17 +435,17 @@
                 break;
             case "pizza":
                 const pAreaPizza = (vals.monthly * 12 * 0.07).toFixed(2);
-                shock = activeLang === 'sr' ? `Pojeo si <span class="highlight">${pAreaPizza} m²</span> pice godišnje.` : `You ate <span class="highlight">${pAreaPizza} m²</span> of pizza per year.`;
+                shock = activeLang === 'sr' ? `Pojedeš <span class="highlight">${pAreaPizza} m²</span> pice godišnje.` : `You eat <span class="highlight">${pAreaPizza} m²</span> of pizza per year.`;
                 math = activeLang === 'sr' ? `Prosečna pica ima površinu od 0.07m².` : `Average pizza area of 0.07m².`;
                 break;
             case "sleep":
                 const debtDaysSleep = ((8 - vals.shours) * 365.25 / 24).toFixed(1);
-                shock = activeLang === 'sr' ? `Gubiš <span class="highlight">${debtDaysSleep} dana</span> regeneracije godišnje.` : `You lose <span class="highlight">${debtDaysSleep} days</span> of recovery per year.`;
+                shock = activeLang === 'sr' ? `Gubiš <span class="highlight">${debtDaysSleep} dana</span> odmora godišnje.` : `You lose <span class="highlight">${debtDaysSleep} days</span> of recovery per year.`;
                 math = activeLang === 'sr' ? `Poređenje sa idealnih 8h sna dnevno.` : `Against 8h optimal sleep daily.`;
                 break;
             case "exam":
-                const totalHExam = (vals.pages / vals.pph).toFixed(1);
-                const dNeededExam = (totalHExam / vals.hours).toFixed(1);
+                const totalHExam = (vals.pages / (vals.pph || 1)).toFixed(1);
+                const dNeededExam = (totalHExam / (vals.hours || 1)).toFixed(1);
                 shock = activeLang === 'sr' ? `Treba ti <span class="highlight">${dNeededExam} dana</span>. Ukupno: <span class="highlight">${totalHExam} sati</span>.` : `You need <span class="highlight">${dNeededExam} days</span>. Total: <span class="highlight">${totalHExam} hours</span>.`;
                 math = activeLang === 'sr' ? `${formatNumber(vals.pages)} strana pri ${vals.pph} str/h.` : `${formatNumber(vals.pages)} pages at ${vals.pph} str/h.`;
                 break;
@@ -434,7 +461,7 @@
                 break;
             case "sitting":
                 const sYSitting = (vals.shours_day * 365.25 * vals.syears / 8760).toFixed(1);
-                shock = activeLang === 'sr' ? `Proveo si <span class="highlight">${sYSitting} godina</span> svog života sedeći.` : `Spent <span class="highlight">${sYSitting} years</span> of your life sitting.`;
+                shock = activeLang === 'sr' ? `Presedeo si <span class="highlight">${sYSitting} godina</span> svog života.` : `Spent <span class="highlight">${sYSitting} years</span> of your life sitting.`;
                 math = activeLang === 'sr' ? `Sati sedenja pretvoreni u pune godine.` : `Total hours converted to years.`;
                 break;
             case "waiting":
@@ -447,7 +474,10 @@
                 shock = activeLang === 'sr' ? `Proveo si <span class="highlight">${formatNumber(cdCommute)} dana</span> u prevozu.` : `Spent <span class="highlight">${formatNumber(cdCommute)} days</span> in traffic.`;
                 math = activeLang === 'sr' ? `Bazirano na 250 radnih dana godišnje.` : `Based on 250 working days per year.`;
                 break;
+            default:
+                shock = "Data processed."; math = "Math verified.";
         }
+
         renderResultsArea(activeTool, activeTool, [shock, math]);
     }
 

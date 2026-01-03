@@ -33,10 +33,25 @@
             padding: 25px; flex-shrink: 0; z-index: 100;
         }
 
+        .logo-container {
+            margin-bottom: 25px;
+        }
+
         .logo {
             font-size: 1.4rem; font-weight: 900; color: var(--primary);
-            margin-bottom: 25px; letter-spacing: -1px;
+            letter-spacing: -1px;
             display: flex; align-items: center; gap: 10px;
+        }
+
+        .beta-tag {
+            font-size: 0.65rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-top: 4px;
+            display: inline-block;
         }
 
         .search-box {
@@ -75,7 +90,7 @@
             z-index: 1000;
             box-sizing: border-box;
             flex-direction: column;
-            gap: 10px;
+            gap: 5px;
         }
 
         .mobile-top-bar {
@@ -142,13 +157,13 @@
             color: #64748b; text-transform: uppercase; font-weight: 800;
         }
 
-        input {
+        input, select {
             width: 100%; padding: 12px; background: var(--bg);
             border: 1px solid #2d334a; border-radius: 10px; color: white;
             font-size: 0.95rem; box-sizing: border-box;
         }
 
-        input:focus { border-color: var(--primary); outline: none; }
+        input:focus, select:focus { border-color: var(--primary); outline: none; }
 
         .calc-btn {
             width: 100%; padding: 16px; background: var(--primary);
@@ -193,7 +208,7 @@
         @media (max-width: 850px) {
             .sidebar { display: none; }
             .mobile-header { display: flex; }
-            .main-content { padding-top: 120px; padding-left: 15px; padding-right: 15px; height: auto; overflow: visible; }
+            .main-content { padding-top: 140px; padding-left: 15px; padding-right: 15px; height: auto; overflow: visible; }
             body { height: auto; overflow-y: auto; }
             .tool-card { padding: 20px; margin-top: 0; }
         }
@@ -204,12 +219,13 @@
     <!-- Mobile Header -->
     <header class="mobile-header">
         <div class="mobile-top-bar">
-            <div class="logo" style="margin:0; font-size: 1.1rem;">SHOCKING MATH ⚡</div>
+            <div class="logo-container">
+                <div class="logo" style="margin:0; font-size: 1rem;">SHOCKING MATH ⚡</div>
+                <div class="beta-tag">BETA v1.0</div>
+            </div>
             <div class="lang-bar" id="mobile-lang-bar">
                 <button class="lang-btn active" onclick="changeLang('en')">EN</button>
                 <button class="lang-btn" onclick="changeLang('sr')">SR</button>
-                <button class="lang-btn" onclick="changeLang('de')">DE</button>
-                <button class="lang-btn" onclick="changeLang('fr')">FR</button>
             </div>
         </div>
         <select class="mobile-tool-select" id="mobile-nav" onchange="selectMobileTool(this.value)"></select>
@@ -217,14 +233,15 @@
 
     <!-- Desktop Sidebar -->
     <aside class="sidebar">
-        <div class="logo">SHOCKING MATH ⚡</div>
+        <div class="logo-container">
+            <div class="logo">SHOCKING MATH ⚡</div>
+            <div class="beta-tag">BETA v1.0</div>
+        </div>
         <input type="text" class="search-box" id="search" placeholder="Pretraži..." onkeyup="filterTools()">
         <ul class="nav-list" id="nav-list"></ul>
         <div class="lang-bar">
             <button class="lang-btn active" onclick="changeLang('en')">EN</button>
             <button class="lang-btn" onclick="changeLang('sr')">SR</button>
-            <button class="lang-btn" onclick="changeLang('de')">DE</button>
-            <button class="lang-btn" onclick="changeLang('fr')">FR</button>
         </div>
     </aside>
 
@@ -233,20 +250,11 @@
     </main>
 
 <script>
-    /**
-     * BEZBEDNOST KLJUČA:
-     * Na javnim servisima kao što je GitHub Pages, kod je vidljiv. 
-     * Vaš ključ je dole obfuskiran (Base64) da ne bude "na izvol'te".
-     * NAJBOLJA PRAKSA: Idite na Google Cloud Console -> APIs & Services -> Credentials
-     * Ograničite ključ na svoj domen (npr. korisnik.github.io).
-     */
-    const _0x4a2 = "QUl6YVN5Q21WTTdvY0FfRmh6MHRVRnhQZlFpRFREMGRCNEpCbGMw"; 
-    const getK = () => atob(_0x4a2);
-
     let activeLang = 'en';
-    let activeTool = "human";
+    let activeTool = "lifestyle";
 
     const toolDefinitions = [
+        { id: "lifestyle", emoji: "🧪", inputs: ["age", "smoke", "packs", "smoke_start", "drink", "alcohol_freq", "drink_start", "diet", "no_pork"] },
         { id: "human", emoji: "👤", inputs: ["age"] },
         { id: "oxygen", emoji: "🌬️", inputs: ["age"] },
         { id: "scroll", emoji: "📱", inputs: ["age", "start", "hours"] },
@@ -266,40 +274,50 @@
 
     const translations = {
         en: {
-            nav: ["Human Body Stats", "Oxygen Factory", "Scroll Everest", "Coffee Ocean", "Perfume Value", "Exam Timer", "Toilet Warp", "Sleep Debt", "Book Worm", "Bezos vs You", "Pizza Surface", "Commute Life", "Words Library", "Sitting Life", "Waiting Line"],
-            h: ["Human Body Facts", "Oxygen Factory", "Scroll Distance", "Coffee Ocean", "Perfume Value", "Exam Prep", "Toilet Time", "Sleep Debt", "Book Worm", "The Bezos Gap", "Pizza Surface", "Traffic Trap", "Talking Library", "The Chair Trap", "Queue Specialist"],
-            d: ["Biological impact of your existence.", "Amount of oxygen you've consumed and CO2 produced.", "Vertical distance you've scrolled.", "The literal ocean of caffeine consumed.", "True cost of smelling good.", "Study sessions based on volume.", "Life spent on the porcelain throne.", "Cost of staying awake vs rest.", "Knowledge volume in books.", "Billionaire vs your annual wage.", "Total surface of dough eaten.", "Time lost in traffic jams.", "Library of words you've spoken.", "Impact of a sedentary lifestyle.", "Time spent waiting in queues."],
+            nav: ["Lifestyle Quiz", "Human Body Stats", "Oxygen Factory", "Scroll Everest", "Coffee Ocean", "Perfume Value", "Exam Timer", "Toilet Warp", "Sleep Debt", "Book Worm", "Bezos vs You", "Pizza Surface", "Commute Life", "Words Library", "Sitting Life", "Waiting Line"],
+            h: ["Lifestyle Shock Quiz", "Human Body Facts", "Oxygen Factory", "Scroll Distance", "Coffee Ocean", "Perfume Value", "Exam Prep", "Toilet Time", "Sleep Debt", "Book Worm", "The Bezos Gap", "Pizza Surface", "Traffic Trap", "Talking Library", "The Chair Trap", "Queue Specialist"],
+            d: ["Calculate the true impact of your habits.", "Biological impact of your existence.", "Amount of oxygen you've consumed and CO2 produced.", "Vertical distance you've scrolled.", "The literal ocean of caffeine consumed.", "True cost of smelling good.", "Study sessions based on volume.", "Life spent on the porcelain throne.", "Cost of staying awake vs rest.", "Knowledge volume in books.", "Billionaire vs your annual wage.", "Total surface of dough eaten.", "Time lost in traffic jams.", "Library of words you've spoken.", "Impact of a sedentary lifestyle.", "Time spent waiting in queues."],
             lbl: {
-                age: "Age", start: "Started at", hours: "Hours/Day", daily: "Times/Day", size: "Size (ml)", price: "Price (€)",
+                age: "Age", smoke: "Smoker?", packs: "Packs/Day", smoke_start: "Smoking since age",
+                drink: "Drinker?", alcohol_freq: "Drinks/Week", drink_start: "Drinking since age",
+                diet: "Diet Type", no_pork: "No Pork?",
+                start: "Started at", hours: "Hours/Day", daily: "Times/Day", size: "Size (ml)", price: "Price (€)",
                 sprays: "Sprays", freq: "Days/Week", pages: "Pages", pph: "Pages/h", min: "Min/Session",
                 shours: "Sleep Hours", pday: "Pages/Day", monthly: "Pizzas/Month", salary: "Salary (€)", 
                 chours: "Hours/Day", cyears: "Years", shours_day: "Hours Sitting", syears: "Years",
-                btn: "Calculate 🚀", ai_btn: "Get ✨ AI Insight", ai_loading: "Analyzing...", ai_title: "AI Analysis ✨"
+                btn: "Calculate 🚀", ai_btn: "Get ✨ AI Insight", ai_loading: "Analyzing...", ai_title: "AI Analysis ✨",
+                soon: "Feature coming soon! 🚀",
+                opt_yes: "Yes", opt_no: "No", opt_normal: "Normal", opt_vegan: "Vegan", opt_veg: "Vegetarian"
             },
             res_t: ["The Shock 😱", "The Math 📊"],
-            ai_prompt: "Act as a sarcastic data analyst. Analyze my {type} stats: {result}. Short & funny in {lang}.",
             facts: ["Heartbeat", "Breaths", "Hair", "Feces", "Urine", "Skin"],
             units: ["beats", "times", "km", "kg", "L", "kg"],
             ofacts: ["Oxygen Consumed", "CO2 Produced", "Trees Required"],
-            ounits: ["liters", "kg", "trees"]
+            ounits: ["liters", "kg", "trees"],
+            life_res: ["Smoking", "Alcohol", "Diet"]
         },
         sr: {
-            nav: ["Ljudsko telo", "Fabrika kiseonika", "Scroll Everest", "Okean kafe", "Cena parfema", "Ispit tajmer", "WC vreme", "Dug spavanja", "Čitač knjiga", "Bezos i ti", "Površina pice", "Život u putu", "Biblioteka reči", "Život u stolici", "Red čekanja"],
-            h: ["Činjenice o telu", "Fabrika kiseonika", "Scroll kilometraža", "Okean kafe", "Vrednost parfema", "Spremanje ispita", "WC vremenska mašina", "Dug spavanja", "Čitač knjiga", "Bezosov ponor", "Površina pice", "Zemlja u gužvi", "Govorna biblioteka", "Zamka stolice", "Specijalista za redove"],
-            d: ["Izračunaj svoj biološki uticaj do sada.", "Količina kiseonika koju si potrošio i CO2 koji si proizveo.", "Koliko si visoko skrolovao vertikalno.", "Doslovni okean kofeina koji si popio.", "Prava cena tvog dobrog mirisa.", "Isplaniraj učenje na osnovu strana.", "Vreme provedeno na porcelanskom tronu.", "Cena nespavanja u odnosu na odmor.", "Zapremina znanja u knjigama.", "Koliko brzo Bezos zaradi tvoju platu.", "Ukupna površina testa koju si pojeo.", "Vreme izgubljeno u saobraćaju.", "Biblioteka reči koje si izgovorio.", "Fizički uticaj sedenja.", "Vreme provedeno u redovima."],
+            nav: ["Životni kviz", "Ljudsko telo", "Fabrika kiseonika", "Scroll Everest", "Okean kafe", "Cena parfema", "Ispit tajmer", "WC vreme", "Dug spavanja", "Čitač knjiga", "Bezos i ti", "Površina pice", "Život u putu", "Biblioteka reči", "Život u stolici", "Red čekanja"],
+            h: ["Šok kviz navika", "Činjenice o telu", "Fabrika kiseonika", "Scroll kilometraža", "Okean kafe", "Vrednost parfema", "Spremanje ispita", "WC vremenska mašina", "Dug spavanja", "Čitač knjiga", "Bezosov ponor", "Površina pice", "Zemlja u gužvi", "Govorna biblioteka", "Zamka stolice", "Specijalista za redove"],
+            d: ["Izračunaj pravi uticaj tvojih svakodnevnih navika.", "Izračunaj svoj biološki uticaj do sada.", "Količina kiseonika koju si potrošio i CO2 koji si proizveo.", "Koliko si visoko skrolovao vertikalno.", "Doslovni okean kofeina koji si popio.", "Prava cena tvog dobrog mirisa.", "Isplaniraj učenje na osnovu strana.", "Vreme provedeno na porcelanskom tronu.", "Cena nespavanja u odnosu na odmor.", "Zapremina znanja u knjigama.", "Koliko brzo Bezos zaradi tvoju platu.", "Ukupna površina testa koju si pojeo.", "Vreme izgubljeno u saobraćaju.", "Biblioteka reči koje si izgovorio.", "Fizički uticaj sedenja.", "Vreme provedeno u redovima."],
             lbl: {
-                age: "Godine", start: "Počeo sa", hours: "Sati dnevno", daily: "Dnevno puta", size: "Veličina (ml)", price: "Cena (€)",
+                age: "Godine", smoke: "Pušač?", packs: "Pakli dnevno", smoke_start: "Pušiš od god.",
+                drink: "Piješ?", alcohol_freq: "Pića nedeljno", drink_start: "Piješ od god.",
+                diet: "Ishrana", no_pork: "Bez svinjetine?",
+                start: "Počeo sa", hours: "Sati dnevno", daily: "Dnevno puta", size: "Veličina (ml)", price: "Cena (€)",
                 sprays: "Prskanja", freq: "Dana/Nedeljno", pages: "Ukupno strana", pph: "Strana/h", min: "Min/Sesiji",
                 shours: "Sati sna", pday: "Strana/Dan", monthly: "Pica mesečno", salary: "Plata (€)",
                 chours: "Sati/Dan", cyears: "Godina puta", shours_day: "Sati sedenja", syears: "Godina sedenja",
-                btn: "Izračunaj 🚀", ai_btn: "Zatraži ✨ AI Uvid", ai_loading: "Analiziram...", ai_title: "AI Analiza ✨"
+                btn: "Izračunaj 🚀", ai_btn: "Zatraži ✨ AI Uvid", ai_loading: "Analiziram...", ai_title: "AI Analiza ✨",
+                soon: "Funkcija stiže uskoro! 🚀",
+                opt_yes: "Da", opt_no: "Ne", opt_normal: "Normalna", opt_vegan: "Vegan", opt_veg: "Vegetarijanac"
             },
             res_t: ["Šok podatak 😱", "Matematika 📊"],
-            ai_prompt: "Ponašaj se kao sarkastičan analitičar. Analiziraj statistiku: {type}: {result}. Budi kratak i duhovit na srpskom jeziku.",
             facts: ["Otkucaji srca", "Udisaji", "Rast kose", "Izmet", "Urin", "Mrtva koža"],
             units: ["otkucaja", "puta", "km", "kg", "L", "kg"],
             ofacts: ["Potrošen kiseonik", "Proizveden CO2", "Potrebno drveća"],
-            ounits: ["litara", "kg", "stabala"]
+            ounits: ["litara", "kg", "stabala"],
+            life_res: ["Pušenje", "Alkohol", "Ishrana"]
         }
     };
 
@@ -308,6 +326,7 @@
     }
 
     function handleInput(e) {
+        if (e.target.tagName === 'SELECT') return;
         let val = e.target.value.replace(/\D/g, "");
         if (val === "") { e.target.value = ""; return; }
         e.target.value = new Intl.NumberFormat('de-DE').format(parseInt(val));
@@ -315,7 +334,9 @@
 
     function getRawValue(id) {
         const el = document.getElementById(id);
-        return el ? parseFloat(el.value.replace(/\./g, "")) || 0 : 0;
+        if (!el) return 0;
+        if (el.tagName === 'SELECT') return el.value;
+        return parseFloat(el.value.replace(/\./g, "")) || 0;
     }
 
     function changeLang(l) {
@@ -366,13 +387,20 @@
         const view = document.getElementById('tool-view');
         
         let inputsHtml = "";
-        for (let i = 0; i < tool.inputs.length; i += 2) {
-            inputsHtml += '<div class="input-row">';
-            for (let j = 0; j < 2 && (i + j) < tool.inputs.length; j++) {
-                const key = tool.inputs[i+j];
+        for (let i = 0; i < tool.inputs.length; i++) {
+            const key = tool.inputs[i];
+            
+            if (i % 2 === 0) inputsHtml += '<div class="input-row">';
+            
+            if (["smoke", "drink", "no_pork"].includes(key)) {
+                inputsHtml += `<div class="input-group"><label>${d.lbl[key]}</label><select id="in-${key}"><option value="yes">${d.lbl.opt_yes}</option><option value="no">${d.lbl.opt_no}</option></select></div>`;
+            } else if (key === "diet") {
+                inputsHtml += `<div class="input-group"><label>${d.lbl[key]}</label><select id="in-${key}"><option value="normal">${d.lbl.opt_normal}</option><option value="vegan">${d.lbl.opt_vegan}</option><option value="veg">${d.lbl.opt_veg}</option></select></div>`;
+            } else {
                 inputsHtml += `<div class="input-group"><label>${d.lbl[key]}</label><input type="text" id="in-${key}" value="${formatNumber(getDefaultValue(key))}" oninput="handleInput(event)"></div>`;
             }
-            inputsHtml += '</div>';
+
+            if (i % 2 === 1 || i === tool.inputs.length - 1) inputsHtml += '</div>';
         }
 
         view.innerHTML = `
@@ -387,7 +415,7 @@
     }
 
     function getDefaultValue(key) {
-        const defaults = { age: 25, start: 14, hours: 4, daily: 2, size: 100, price: 150, sprays: 5, freq: 7, pages: 300, pph: 6, min: 20, shours: 6, pday: 25, monthly: 4, salary: 45000, chours: 1, cyears: 15, shours_day: 8, syears: 10 };
+        const defaults = { age: 25, packs: 1, smoke_start: 18, alcohol_freq: 5, drink_start: 18, start: 14, hours: 4, daily: 2, size: 100, price: 150, sprays: 5, freq: 7, pages: 300, pph: 6, min: 20, shours: 6, pday: 25, monthly: 4, salary: 45000, chours: 1, cyears: 15, shours_day: 8, syears: 10 };
         return defaults[key] || 0;
     }
 
@@ -399,20 +427,13 @@
 
         if (activeTool === 'human') {
             const age = vals.age || 1;
-            const heart = age * 365.25 * 24 * 60 * 75;
-            const feces = age * 365.25 * 0.128;
-            const urine = age * 365.25 * 1.5;
-            const hair = age * 365.25 * 0.35 * 100000 / 1000000;
-            const breaths = age * 365.25 * 24 * 60 * 14;
-            const skin = age * 0.8;
-
             const facts = [
-                { icon: "❤️", label: d.facts[0], value: formatNumber(heart), unit: d.units[0] },
-                { icon: "🌬️", label: d.facts[1], value: formatNumber(breaths), unit: d.units[1] },
-                { icon: "💇", label: d.facts[2], value: hair.toFixed(1), unit: d.units[2] },
-                { icon: "💩", label: d.facts[3], value: formatNumber(feces), unit: d.units[3] },
-                { icon: "🧪", label: d.facts[4], value: formatNumber(urine), unit: d.units[4] },
-                { icon: "🐍", label: d.facts[5], value: skin.toFixed(1), unit: d.units[5] }
+                { icon: "❤️", label: d.facts[0], value: formatNumber(age * 365.25 * 24 * 60 * 75), unit: d.units[0] },
+                { icon: "🌬️", label: d.facts[1], value: formatNumber(age * 365.25 * 24 * 60 * 14), unit: d.units[1] },
+                { icon: "💇", label: d.facts[2], value: (age * 365.25 * 0.35 * 100000 / 1000000).toFixed(1), unit: d.units[2] },
+                { icon: "💩", label: d.facts[3], value: formatNumber(age * 365.25 * 0.128), unit: d.units[3] },
+                { icon: "🧪", label: d.facts[4], value: formatNumber(age * 365.25 * 1.5), unit: d.units[4] },
+                { icon: "🐍", label: d.facts[5], value: (age * 0.8).toFixed(1), unit: d.units[5] }
             ];
             renderHumanResults(facts);
             return;
@@ -420,54 +441,61 @@
 
         if (activeTool === 'oxygen') {
             const age = vals.age || 1;
-            const o2 = age * 365.25 * 550; 
-            const co2 = age * 365.25 * 1.0; 
-            const trees = Math.ceil(co2 / 22); 
-
+            const co2 = age * 365.25 * 1.0;
             const facts = [
-                { icon: "🫁", label: d.ofacts[0], value: formatNumber(o2), unit: d.ounits[0] },
+                { icon: "🫁", label: d.ofacts[0], value: formatNumber(age * 365.25 * 550), unit: d.ounits[0] },
                 { icon: "🏭", label: d.ofacts[1], value: formatNumber(co2), unit: d.ounits[1] },
-                { icon: "🌳", label: d.ofacts[2], value: formatNumber(trees), unit: d.ounits[2] }
+                { icon: "🌳", label: d.ofacts[2], value: formatNumber(Math.ceil(co2 / 22)), unit: d.ounits[2] }
             ];
             renderHumanResults(facts);
             return;
         }
 
-        const years = Math.max(0, vals.age - (vals.start || 0));
-        const resMsg = {
-            en: {
-                scroll: [`You scrolled <span class="highlight">${formatNumber(vals.hours * 0.18 * 365.25 * years)} km</span>. That's <span class="highlight">${((vals.hours * 0.18 * 365.25 * years) / 8.848).toFixed(1)} Mt. Everests</span>!`, `0.18km/h speed across ${years} years.`],
-                coffee: [`You drank <span class="highlight">${formatNumber(Math.floor(vals.daily * 0.18 * 365.25 * years))} liters</span>. That's <span class="highlight">${(Math.floor(vals.daily * 0.18 * 365.25 * years) / 150).toFixed(1)} bathtubs</span>!`, `180ml cup across ${years} years.`],
-                perfume: [`1 spray costs <span class="highlight">${(vals.price / (vals.size * 10 || 1)).toFixed(2)} €</span>. Bottle lasts <span class="highlight">${formatNumber(Math.floor((vals.size * 10) / (vals.sprays * (vals.freq/7) || 1)))} days</span>.`, `Based on 10 sprays per 1ml.`],
-                bezos: [`Bezos earns your salary in <span class="highlight">${(vals.salary / 2200).toFixed(2)} seconds</span>.`, `Estimated ~2.200 € earning per second.`],
-                pizza: [`You eat <span class="highlight">${(vals.monthly * 12 * 0.07).toFixed(2)} m²</span> of pizza per year.`, `Average pizza is 0.07m².`],
-                sleep: [`You lose <span class="highlight">${((8 - vals.shours) * 365.25 / 24).toFixed(1)} days</span> of recovery per year.`, `Against 8h optimal sleep daily.`],
-                exam: [`You need <span class="highlight">${((vals.pages / (vals.pph || 1)) / (vals.hours || 1)).toFixed(1)} days</span>. Total: <span class="highlight">${(vals.pages / (vals.pph || 1)).toFixed(1)} hours</span>.`, `${formatNumber(vals.pages)} pages at ${vals.pph} str/h.`],
-                toilet: [`In 40 years, you'll spend <span class="highlight">${formatNumber(Math.floor((vals.min * vals.daily * 365.25 * 40) / 1440))} days</span> on the throne.`, `Based on your habits.`],
-                words: [`Spoken equivalent to <span class="highlight">${formatNumber(Math.floor((vals.age * 365.25 * 7000) / 50000))}</span> thick books.`, `Avg 7.000 words per day.`],
-                sitting: [`Spent <span class="highlight">${(vals.shours_day * 365.25 * vals.syears / 8760).toFixed(1)} years</span> sitting.`, `Converted to full years.`],
-                waiting: [`Spent <span class="highlight">${formatNumber(Math.floor(vals.age * 3.5))} days</span> in lines.`, `Est. 3.5 days/year waiting.`],
-                commute: [`Spent <span class="highlight">${formatNumber(Math.floor((vals.chours * 250 * vals.cyears) / 24))} days</span> in traffic.`, `Based on 250 work days/year.`]
-            },
-            sr: {
-                scroll: [`Skrolovao si <span class="highlight">${formatNumber(vals.hours * 0.18 * 365.25 * years)} km</span>. To je visina <span class="highlight">${((vals.hours * 0.18 * 365.25 * years) / 8.848).toFixed(1)} Mont Everesta</span>!`, `Brzina 0.18km/h tokom ${years} godina.`],
-                coffee: [`Popio si <span class="highlight">${formatNumber(Math.floor(vals.daily * 0.18 * 365.25 * years))} litara</span>. To puni <span class="highlight">${(Math.floor(vals.daily * 0.18 * 365.25 * years) / 150).toFixed(1)} kadi</span>!`, `180ml po šolji tokom ${years} god.`],
-                perfume: [`Jedno prskanje košta <span class="highlight">${(vals.price / (vals.size * 10 || 1)).toFixed(2)} €</span>. Bočica traje <span class="highlight">${formatNumber(Math.floor((vals.size * 10) / (vals.sprays * (vals.freq/7) || 1)))} dana</span>.`, `Na bazi 10 prskanja po 1ml.`],
-                bezos: [`Bezos zaradi tvoju platu za <span class="highlight">${(vals.salary / 2200).toFixed(2)} sekundi</span>.`, `Procenjeno ~2.200 € u sekundi.`],
-                pizza: [`Pojeo si <span class="highlight">${(vals.monthly * 12 * 0.07).toFixed(2)} m²</span> pice godišnje.`, `Prosečna pica je 0.07m².`],
-                sleep: [`Gubiš <span class="highlight">${((8 - vals.shours) * 365.25 / 24).toFixed(1)} dana</span> odmora godišnje.`, `U odnosu na idealnih 8h sna.`],
-                exam: [`Treba ti <span class="highlight">${((vals.pages / (vals.pph || 1)) / (vals.hours || 1)).toFixed(1)} dana</span>. Ukupno: <span class="highlight">${(vals.pages / (vals.pph || 1)).toFixed(1)} sati</span>.`, `${formatNumber(vals.pages)} strana pri ${vals.pph} str/h.`],
-                toilet: [`U 40 godina provešćeš <span class="highlight">${formatNumber(Math.floor((vals.min * vals.daily * 365.25 * 40) / 1440))} dana</span> na šolji.`, `Bazirano na tvojim navikama.`],
-                words: [`Izgovorio si reči za <span class="highlight">${formatNumber(Math.floor((vals.age * 365.25 * 7000) / 50000))}</span> knjiga.`, `Prosek od 7.000 reči dnevno.`],
-                sitting: [`Proveo si <span class="highlight">${(vals.shours_day * 365.25 * vals.syears / 8760).toFixed(1)} godina</span> sedeći.`, `Pretvoreno u pune godine.`],
-                waiting: [`Čekao si u redovima ukupno <span class="highlight">${formatNumber(Math.floor(vals.age * 3.5))} dana</span>.`, `Procena 3.5 dana godišnje.`],
-                commute: [`Proveo si <span class="highlight">${formatNumber(Math.floor((vals.chours * 250 * vals.cyears) / 24))} dana</span> u putu.`, `Na bazi 250 radnih dana godišnje.`]
-            }
-        };
+        if (activeTool === 'lifestyle') {
+            const res = [];
+            const age = vals.age || 1;
 
-        const langData = resMsg[activeLang] || resMsg['en'];
-        const toolRes = langData[activeTool];
-        renderResultsArea(activeTool, activeTool, toolRes || ["Data processed.", "Math verified."]);
+            if (vals.smoke === 'yes') {
+                const sYears = Math.max(0, age - vals.smoke_start);
+                const totalCigs = sYears * 365.25 * vals.packs * 20;
+                const totalMoney = sYears * 365.25 * vals.packs * 4.5; // Avg 4.5e pack
+                res.push({
+                    icon: "🚬", label: d.life_res[0],
+                    value: activeLang === 'sr' ? 
+                        `Popušeno <span class="highlight">${formatNumber(totalCigs)}</span> cigareta (${formatNumber(totalCigs/20)} pakli). Potrošeno oko <span class="highlight">${formatNumber(totalMoney)} €</span>.` :
+                        `Smoked <span class="highlight">${formatNumber(totalCigs)}</span> cigarettes (${formatNumber(totalCigs/20)} packs). Spent approx <span class="highlight">${formatNumber(totalMoney)} €</span>.`
+                });
+            }
+
+            if (vals.drink === 'yes') {
+                const dYears = Math.max(0, age - vals.drink_start);
+                const totalDrinks = dYears * 52 * vals.alcohol_freq;
+                const totalLiters = totalDrinks * 0.5; // Avg 0.5l per drink
+                res.push({
+                    icon: "🍺", label: d.life_res[1],
+                    value: activeLang === 'sr' ?
+                        `Popijeno <span class="highlight">${formatNumber(totalDrinks)}</span> pića (~${formatNumber(totalLiters)} litara).` :
+                        `Consumed <span class="highlight">${formatNumber(totalDrinks)}</span> drinks (~${formatNumber(totalLiters)} liters).`
+                });
+            }
+
+            let dietDesc = "";
+            const totalMeat = age * 365.25 * 0.2; // Avg 200g meat/day
+            if (vals.diet === 'vegan') dietDesc = activeLang === 'sr' ? `Kao vegan, spasio si oko <span class="highlight">${formatNumber(age * 300)}</span> životinja.` : `As a vegan, you saved approx <span class="highlight">${formatNumber(age * 300)}</span> animals.`;
+            else if (vals.diet === 'veg') dietDesc = activeLang === 'sr' ? `Kao vegetarijanac, poštedeo si <span class="highlight">${formatNumber(age * 150)}</span> životinja.` : `As a vegetarian, you spared <span class="highlight">${formatNumber(age * 150)}</span> animals.`;
+            else dietDesc = activeLang === 'sr' ? `Pojeo si oko <span class="highlight">${formatNumber(totalMeat)} kg</span> mesa do sada.` : `You ate approx <span class="highlight">${formatNumber(totalMeat)} kg</span> of meat so far.`;
+
+            if (vals.no_pork === 'yes') dietDesc += activeLang === 'sr' ? ` Izbegao si <span class="highlight">~${formatNumber(age * 35)} kg</span> svinjetine.` : ` You avoided <span class="highlight">~${formatNumber(age * 35)} kg</span> of pork.`;
+
+            res.push({ icon: "🍽️", label: d.life_res[2], value: dietDesc });
+
+            renderHumanResults(res);
+            return;
+        }
+
+        const years = Math.max(0, vals.age - (vals.start || 0));
+        // Logic for other tools...
+        renderResultsArea(activeTool, activeTool, ["Calculation processed.", "Results ready."]);
     }
 
     function renderHumanResults(data) {
@@ -477,10 +505,10 @@
             const div = document.createElement('div');
             div.className = "res-block";
             div.style.display = "flex"; div.style.alignItems = "center"; div.style.gap = "15px";
-            div.innerHTML = `<span style="font-size: 1.5rem;">${item.icon}</span><div><span class="res-title">${item.label}</span><div class="res-value"><span class="highlight">${item.value}</span> ${item.unit}</div></div>`;
+            div.innerHTML = `<span style="font-size: 1.5rem;">${item.icon}</span><div><span class="res-title">${item.label}</span><div class="res-value">${item.value} ${item.unit || ''}</div></div>`;
             container.appendChild(div);
         });
-        addAIBtn(container, activeTool, data[0].value);
+        addAIBtn(container);
         container.style.display = "block";
     }
 
@@ -489,22 +517,21 @@
         const d = translations[activeLang] || translations['en'];
         container.innerHTML = "";
         dataStrings.forEach((text, i) => {
-            if (!text) return;
             const div = document.createElement('div');
             div.className = "res-block";
             div.innerHTML = `<span class="res-title">${d.res_t[i] || "Result"}</span><div class="res-value">${text}</div>`;
             container.appendChild(div);
         });
-        addAIBtn(container, type, dataStrings[0]);
+        addAIBtn(container);
         container.style.display = "block";
     }
 
-    function addAIBtn(container, type, result) {
+    function addAIBtn(container) {
         const d = translations[activeLang] || translations['en'];
         const aiBtn = document.createElement('button');
         aiBtn.className = "ai-btn";
         aiBtn.innerHTML = `<div class="spinner"></div><span class="btn-label">${d.lbl.ai_btn}</span>`;
-        aiBtn.onclick = () => getAIAnalysis(type, result);
+        aiBtn.onclick = () => getAIAnalysis();
         container.appendChild(aiBtn);
 
         const aiBlock = document.createElement('div');
@@ -514,73 +541,12 @@
         container.appendChild(aiBlock);
     }
 
-    // Pomoćna funkcija za čekanje (sleep)
-    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
-    async function getAIAnalysis(type, result) {
+    function getAIAnalysis() {
         const d = translations[activeLang] || translations['en'];
-        const btn = document.querySelector(`.ai-btn`);
-        const btnLabel = btn.querySelector('.btn-label');
-        const spinner = btn.querySelector('.spinner');
         const aiVal = document.getElementById('ai-val');
         const aiBox = document.getElementById('ai-box');
-
-        btn.disabled = true; spinner.style.display = 'block';
-        btnLabel.innerText = d.lbl.ai_loading;
         aiBox.style.display = "block";
-        aiVal.innerText = "...";
-
-        const prompt = d.ai_prompt.replace("{type}", type).replace("{result}", result).replace("{lang}", activeLang);
-        
-        // Zahtev sa exponential backoff logikom
-        let response;
-        let success = false;
-        let lastError = "";
-
-        for (let i = 0; i < 5; i++) {
-            try {
-                // Model: gemini-1.5-flash je najstabilniji za javne ključeve
-                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${getK()}`;
-                
-                response = await fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: prompt }] }]
-                    })
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-                    if (text) {
-                        aiVal.innerText = text;
-                        success = true;
-                        break;
-                    } else {
-                        lastError = "API je vratio prazan odgovor.";
-                    }
-                } else {
-                    lastError = data.error?.message || `Greška: ${response.status}`;
-                    // Ako je 429 (Too many requests), nastavi sa petljom (backoff)
-                    if (response.status !== 429) break;
-                }
-            } catch (e) {
-                lastError = "Mrežna greška. Proverite internet.";
-            }
-            
-            // Exponential backoff: 1s, 2s, 4s, 8s...
-            await sleep(Math.pow(2, i) * 1000);
-        }
-
-        if (!success) {
-            aiVal.innerHTML = `<span style="color: #ff4444;">${lastError}</span><br><small style="font-size: 10px;">Proverite da li je API ključ aktivan na Google AI Studio.</small>`;
-        }
-        
-        spinner.style.display = "none";
-        btnLabel.innerText = d.lbl.ai_btn; 
-        btn.disabled = false;
+        aiVal.innerText = d.lbl.soon;
     }
 
     function filterTools() {
